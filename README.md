@@ -118,6 +118,65 @@ Root uchun parol yozamiz
 ```bash
 $ passwd
 ```
+New password deb chiqadi siz parol yozasiz yozgan parolingiz ko'rinmaydi
+Return New password deb chiqadi bunga hozir yozgan parolingizni yozasiz
+Tizimga kirish uchun user ochib olishimiz kerak
+```bash
+$ useradd -mG whell user_ism
+```
+user_ism degan joyiga userni kiritasiz asosan ism yoki nik
+User uchun parol qo'yamiz
+```bash
+$ passwd user_ism
+```
+Bu yerga hozirgi qo'shgan useringizni yozasiz
+Parol yozamiz parol ko'rinmaydi enter bosamiz keyin yozgan parolimizni yana bir marta
+qayta yozamiz
+## 9 Asosiy Sozlamalar
+visudo fileni  tahrirlaymiz
+```bash
+$ EDITOR=nano visudo
+```
+### visudo filenidan shunaqa kodni topamiz
+- root ALL=(ALL) ALL
+- ##Uncomment to allow members of group wheel to execute any command 
+- #%whell ALL=(ALL) ALL
+## visudo filenidan shunaqa kodni topamiz
+
+-  `root ALL=(ALL) ALL`
+- `##Uncomment to allow members of group wheel to execute any command`
+- `#%whell ALL=(ALL) ALL`
+kodning shu yerini topib olamiz bu yerda va manabu ko'rinishga o'zgartiramiz
+root ALL=(ALL) ALL
+-  `root ALL=(ALL) ALL`
+- `##Uncomment to allow members of group wheel to execute any command`
+Kodning shu yerini topib olamiz bu yerda va manabu ko'rinishga o'zgartiramiz
+-  `root ALL=(ALL) ALL`
+- `##Uncomment to allow members of group wheel to execute any command`
+- `%whell ALL=(ALL) ALL`
+shu kod `#%whell ALL=(ALL)` `ALL` `#` coometda bo'ladi biz shuni commentdan ochib qo'yamiz 
+# ni olib tashlab
+`ctrl+o` bosib saqlaymiz va enterni bosamiz keyin `ctrl+x` qilib chiqib ketamiz
+```bash
+$ clear
+```
+## 10 Kerakli dasturlarni ishga tushiramiz
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
