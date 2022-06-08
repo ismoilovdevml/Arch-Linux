@@ -1,0 +1,293 @@
+Arch Linuxni o'rnatish uchun talablar:
+X86_64 (ya'ni 64 bit) mos keladigan mashina
+Minimal 512 MB RAM (tavsiya qilingan 2 Gb)
+Kamida 1 Gb bo'sh disk maydoni (asosiy foydalanish uchun tavsiya etilgan 20 Gb)
+Faol internet aloqasi
+Kamida 2 GB xotira hajmi bo'lgan USB drayver
+1 bosqichi: ISO-ni yuklab oling
+https://www.archlinux.org/download/
+Bu yerdan Russiani tanlab yandex dan .ISO faylini yuklab olasiz
+2 bosqichi: Arch Linux fleshkaga yozish
+Bunda sizga rufus va BalanaTech kabi dasturlar yordam beradi MBR/GPT
+3 bosqichi: USB dan yuklash
+Kmpyuteringizni o'chiring va Arch linux yozilgan fleshkani kompyuterga qo'ying va BOOT 
+menuga kirib fleshkani tanlab o'ting  
+keyin birinchi turganiga qo'yib enter bosasiz
+4 Disklarni ajratish
+Talab qilinadi kompyuter kabel bilan interntega ulanishi yoki bo'lmasa telefon orqali USB kabel
+ulab telefondan modem bering
+$ lsbk //yordamida disklarni ko'ramiz
+$ cfdisk /dev/sda
+Bu yerdan GPT ni bosib o'tamiz
+yangi bo'lim ochamiz bunga 512M berib type ga EFI system beramiz
+512M bu standart o'zgartirilmasin
+Swap bo'lim ochamiz Kompyuter RAM ga teng yoki yarmiga teng holda sawp ochamiz
+masalan 4GB RAM 4GB swap yoki 2GB swap disklar bo'linayotganda GB o'rnga G yoziladi
+typega Linux Swap beramiz qolganini esa ext4 formatda xotira beramiz type linux file system
+O'zgarishlarni saqlash uchun Write bosib yes yozib enter bosamiz keyin Quit bosib chiqib ketamiz
+$clear //tozalab olamiz
+$ lsblk bilan dislarni ko'razmiz bizda /dev/sda ichida /dev/sda1,/dev/sda2,/dev/sda3 bo'ladi
+/dev/sda1 BOOT uchun /dev/sda2 Swap uchun /dev/sda3 xotira roor partition uchun
+5 Disklarni formatlash
+$ mkfs.fat -F32 /de/sda1 //BOOT uchun formatlandi
+$ mkswap /de/sda2 //Swap uchun formatlandi
+$ mkfs.ext4 //ROOT uchun formatlandi Y/n chiqsa y bosamiz
+$ clear // tozlab olamiz
+Eslatma Kompyuterdagi barcha Operatsion tizimlar o'chib ketti hozir 
+6 Jildlarni mountlash
+/dev/sda3 ni /mnt jildiga ulaymiz
+$ mount /dev/sda3 /mnt
+/mnt jildidan boot va EFI jildlar ochib olamiz
+$ mkdir -p /mnt/boot/EFI
+/dev/sda2 ni Swapga ulaymiz
+$ swapon /dev/sda2
+dev/sda1 ni /mnt/boot/EFI jildiga ulaymiz
+$ mount /dev/sda1 /mnt/boot/EFI
+$ clear
+$ lsblk 
+disklar shunday ko'rinishi kerak
+sda1 512M /mnt/boot/EFI
+sda2 RAMga teng [SWAP]
+sda3 /mnt
+7/mnt jildiga archni o'rtamaiz aytagimdek kabelli internet ulangan bo'lishi kerak
+internte ishlayotganini tekshirish 
+$ ping -c 3 google.com
+Internet ishlayotgan bo'lsa paketlarni yangilaymiz
+$ sudo pacman -Sy
+Arch linuxni o'rnatamiz /mnt jildiga 
+$ pacstrap /mnt base base-devel linux linux-firmware nano openssh networkmanager netctl
+$ clear
+8 Arch linuxni sozlash
+fstab faylini generatsiya qilib olamiz
+$ genfstab -U -p /mnt >> /mnt/etc/fstab
+chroot  huquq kerak bo'ladi /mnt ga arch chrootni ulaymiz
+$ arch-chroot /mnt
+Hostname yozamiz yani Komyuterga Nom ismoilovdev@MacbookPro terminalga kirganimid shu chiqadi 
+shu yerdan Macbookpro degan nomni host name dan olyapti 
+$ echo "kompyuternomi" > /etc/hostname //hostname yozish o'zingizga bog'liq hohlagan 
+nomigzini bering
+Root uchun parol yozamiz
+$ passwd
+New password deb chiqadi siz parol yozasiz yozgan parolingiz ko'rinmaydi
+Return New password deb chiqadi bunga hozir yozgan parolingizni yozasiz
+Tizimga kirish uchun user ochib olishimiz kerak
+$ useradd -mG whell user_ism //user_ism degan joyiga userni kiritasiz asosan ism yoki nik
+User uchun parol qo'yamiz
+$ passwd user_ism // bu yerga hozirgi qo'shgan useringizni yozasiz
+Parol yozamiz parol ko'rinmaydi enter bosamiz keyin yozgan parolimizni yana bir marta
+qayta yozamiz
+9 Asosiy Sozlamalar
+visudo fileni  tahrirlaymiz
+$ EDITOR=nano visudo
+
+root ALL=(ALL) ALL
+##Uncomment to allow members of group wheel to execute any command
+#%whell ALL=(ALL) ALL
+kodning shu yerini topib olamiz bu yerda va manabu ko'rinishga o'zgartiramiz
+root ALL=(ALL) ALL
+##Uncomment to allow members of group wheel to execute any command
+%whell ALL=(ALL) ALL
+shu kod #%whell ALL=(ALL) ALL # coometda bo'ladi biz shuni commentdan ochib qo'yamiz 
+# ni olib tashlab
+ctrl+O bosib saqlaymiz va enterni bosamiz keyin ctrl+x qilib chiqib ketamiz
+$ clear
+10 Kerakli dasturlarni ishga tushiramiz
+Kerakli dasturlarni o'rnatib olamiz
+$ pacman -S grub efibootmgr dosfstools mtools os-prober intel-ucode 
+sizda AMD protsessor bo'lsa amd-ucode deb yozing intel bo'lsa intel-ucode 
+[Y/n] chiqadi y bosamiz
+Grub bu operatsion tizimni yuklovchi linuxni hard diskdan yuklovchi komyuter operatsion 
+tizimi va BIOS ni ulab turuvchi dasturiy ta'minot
+$ clear
+Kernelni kompilatsiya qilamiz
+$ mkinitcpio -p linux
+11 Til sozlamalari
+Men maslaxat berardim linuxni inglix tilida ishlatishni boshqa tillarda qiyinchiliklar va 
+muammolar bo'ladi
+$ nano /etc/locale.gen
+bu yerdan #en_US.UTF-8 ni topib olamiz va oldidagi # olib tashlaymiz
+ #en_US.UTF-8 shunday bo'ladi
+ en_US.UTF-8 shu holga keltiramiz
+ctrl+O bosib saqlaymiz va enterni bosamiz keyin ctrl+x qilib chiqib ketamiz
+$ clear
+locale.gen ni ishga tushirib til binary faylini ishga tushirib tilni faylini
+generatsiya qilamiz 
+11 Shell almashtirish 
+Hozir default holda bash shel bo'ladi biz hozir boshqa shell qo'yamiz
+$ pacman -S fish
+shellni o'zgartiramiz
+$ chsh -s /usr/bin/fish
+$ fish
+Operatsion Tizim tilini kiritamiz
+$ nano /etc/locale.conf
+bu yerga biz quyidagi kodni yozamiz
+LANG=en_US.UTF-8
+ctrl+O bosib saqlaymiz va enterni bosamiz keyin ctrl+x qilib chiqib ketamiz
+$ clear
+klavliatura tilini kiritamiz
+$ echo "KEYMAP=en_US.UTF-8" > /etc/vconsole.conf
+12 Soat sozlamalari
+$ hwclock --systohc --utc
+Joylashuvni va vaqt mintaqasini belgilashimiz kerak
+$ ln -sf /usr/share/zoneinfo/Asia/Tashkent /etc/localtime
+Foydalanuvchi sozlamalari
+$ su user_ism // user_ism degan joyda qo'shgan useringizni yozasiz
+Userdan shell ni almashtiramiz
+$ chsh -s /usr/bin/fish
+parol so'raydi parolimizni kiritamiz
+userdan chiqami endi
+$ exit
+Bootloader o'rnatamiz
+$ lsblk
+sda1 ga bootloader o'rnatamiz
+$ grub-install --target=x86_64-efi --bootloader-id=GRUB --recheck
+Grub o'rnatiladi endi Grubni configuratsiya qilamiz
+$ grub-mkconfig -o /boot/grub/grub.cfg
+Grub configuratsion fayli generatsiya qilinadi
+$ clear
+13 Kerakli dasturlar va Sozlamalar
+Kerakli dasturlar va utilatalarni o'rnatamiz
+$ pacman -S neofetch python ranger firefox
+sshd.service va NetworkManagerni yoqib qo'yamiz
+Asosiy dasturlarni ishga tushirib yoqib qo'yamiz
+$ sytemctl enable sshd.service && sytemctl enable NetworkManager
+o'rnatuchidan chiqamiz
+$ exit
+$ exit
+Barcha ulangan disklarni umount qilamiz
+$ umount -a
+Kompyuterni o'chirib yoqamiz
+$ reboot
+Kompyuter O'chganidan keyin fleshkani olib tashlaysiz Operatsion siztema
+hard diskdan yuklanadi
+Kompyuter yonganidan keyin Grub ishga tushadi va enter bosamiz
+odiy terminal rejimida chiqadi 
+arch login: deb chiqadi bunga biz userimizni kiritamiz
+Password: bu yerga parolimizni yozamiz
+$ neofetch
+Internet ishlayotganini teskshirib ko'ring
+$ ping -c 3 google.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
