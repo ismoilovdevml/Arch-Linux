@@ -178,8 +178,121 @@ muammolar bo'ladi
 ```bash
 $ nano /etc/locale.gen
 ```
-
-
+Bu yerdan `#en_US.UTF-8`  ni topib olamiz va oldidagi # olib tashlaymiz
+ `#en_US.UTF-8` shunday bo'ladi
+ `en_US.UTF-8`  shu holga keltiramiz
+`ctrl+O` bosib saqlaymiz va enterni bosamiz keyin `ctrl+x`qilib chiqib ketamiz
+```bash
+$ clear
+```
+`locale.gen` ni ishga tushirib til binary faylini ishga tushirib tilni faylini
+generatsiya qilamiz 
+```bash
+$ locale-gen
+```
+## 12 Shell almashtirish 
+Hozir default holda `bash sheel` bo'ladi biz hozir boshqa shell qo'yamiz
+```bash
+$ pacman -S fish
+```
+shellni o'zgartiramiz
+```bash
+$ chsh -s /usr/bin/fish
+$ fish
+```
+Operatsion Tizim tilini kiritamiz
+```bash
+$ nano /etc/locale.conf
+```
+bu yerga biz quyidagi kodni yozamiz
+```bash
+LANG=en_US.UTF-8
+```
+`ctrl+O` bosib saqlaymiz va enterni bosamiz keyin `ctrl+x`qilib chiqib ketamiz
+Klavliatura tilini kiritamiz
+```bash
+$ echo "KEYMAP=en_US.UTF-8" > /etc/vconsole.conf
+```
+## 12 Soat sozlamalari
+```bash
+$ hwclock --systohc --utc
+```
+Joylashuvni va vaqt mintaqasini belgilashimiz kerak
+```bash
+$ ln -sf /usr/share/zoneinfo/Asia/Tashkent /etc/localtime
+```
+## Foydalanuvchi sozlamalari
+```bash
+$ su user_ism 
+```
+`user_ism` degan joyda qo'shgan useringizni yozasiz
+Userdan shell ni almashtiramiz
+```bash
+$ chsh -s /usr/bin/fish
+```
+Parol so'raydi parolimizni kiritamiz
+exit qilib userdan chiqami endi
+```bash
+$ exit
+```
+## Bootloader o'rnatamiz
+```bash
+$ lsblk
+```
+sda1 ga bootloader o'rnatamiz
+```bash
+$ grub-install --target=x86_64-efi --bootloader-id=GRUB --recheck
+```
+Grub o'rnatiladi endi Grubni configuratsiya qilamiz
+```bash
+$ grub-mkconfig -o /boot/grub/grub.cfg
+```
+Grub configuratsion fayli generatsiya qilinadi
+## 13 Kerakli dasturlar va Sozlamalar
+Kerakli dasturlar va utilatalarni o'rnatamiz
+```bash
+$ pacman -S neofetch python ranger firefox
+```
+`sshd.service `va `NetworkManager`ni yoqib qo'yamiz
+Asosiy dasturlarni ishga tushirib yoqib qo'yamiz
+```bash
+$ sytemctl enable sshd.service && sytemctl enable NetworkManager
+```
+O'rnatuchidan chiqamiz
+```bash
+$ exit
+$ exit
+```
+Barcha ulangan disklarni umount qilamiz
+```bash
+$ umount -a
+```
+Kompyuterni o'chirib yoqamiz
+```bash
+$ sudo reboot
+```
+Kompyuter O'chganidan keyin fleshkani olib tashlaysiz Operatsion siztema
+hard diskdan yuklanadi
+Kompyuter yonganidan keyin Grub ishga tushadi va enter bosamiz Arch linux 
+odiy terminal rejimida ishga tushadi
+`arch login:` deb chiqadi bunga biz userimizni kiritamiz
+`Password:` bu yerga parolimizni yozamiz
+```bash
+$ neofetch
+```
+Internet ishlayotganini teskshirib ko'ring
+```bash
+$ ping -c 3 google.com
+```
+## Tabriklaymiz Sizda Arch linux muvafaqqiyatli o'rnatildi
+Agar barchasini to'gri bajargan bo'lsangiz sizda muammosiz arch linux o'rnatilgan
+Endi navbat Arch linuxga DE (Desktop Environment) o'rnatishdir
+Arch Linuxga DE o'rnatish uchun link https://github.com/ismoilovdevml/Arch-linux-DE
+Qandaydir xato va kamchiliklar bo'lsa yozib qoldiring
+Telegram aloqa: https://t.me/ismoilovdev
+Arch linux bo'yicha qo'llanmalar o'quv qo'llanmalari va foydali postlarni quyidagi kanaldan topishingiz mumkin
+Kanal:  https://t.me/Otabek_Ismoilov
+Muallif: Otabek Ismoilov
 
 
 
