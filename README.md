@@ -161,15 +161,27 @@ shu kod `#%whell ALL=(ALL)` `ALL` `#` coometda bo'ladi biz shuni commentdan ochi
 $ clear
 ```
 ## 10 Kerakli dasturlarni ishga tushiramiz
-
-
-
-
-
-
-
-
-
+Kerakli dasturlarni o'rnatib olamiz
+```bash
+$ pacman -S grub efibootmgr dosfstools mtools os-prober intel-ucode
+```
+sizda `AMD` protsessor bo'lsa `amd-ucode`deb yozing intel bo'lsa `intel-ucode `
+`[Y/n]`chiqadi y bosamiz
+Grub bu operatsion tizimni yuklovchi linuxni hard diskdan yuklovchi komyuter operatsion 
+tizimi va BIOS ni ulab turuvchi dasturiy ta'minot
+```bash
+$ clear
+```
+Kernelni kompilatsiya qilamiz
+```bash
+$ mkinitcpio -p linux
+```
+## 11 Til sozlamalari
+Men maslaxat berardim linuxni ingliz tilida ishlatishni boshqa tillarda qiyinchiliklar va 
+muammolar bo'ladi
+```bash
+$ nano /etc/locale.gen
+```
 
 
 
