@@ -9,17 +9,17 @@ Minimal 512 MB RAM (tavsiya qilingan 2 Gb)
 Kamida 1 Gb bo'sh disk maydoni (asosiy foydalanish uchun tavsiya etilgan 20 Gb)
 Faol internet aloqasi
 Kamida 2 GB xotira hajmi bo'lgan USB drayver
-## 1.ISO-ni yuklab oling
+## 1 ISO-ni yuklab oling
 http://mirror.yandex.ru/archlinux/iso/2022.06.01/
 quyidali link orqali .ISO faylini yuklab oling tepadan uchinchi
-## 2.Arch Linux fleshkaga yozish
+## 2 Arch Linux fleshkaga yozish
 Bunda sizga rufus va BalanaTech kabi dasturlar yordam beradi MBR/GPT
 Bu qo'llanmada GPT yozilgan Arch o'rnatamiz MBR boshqacha 
 MBR uchun https://www.youtube.com/watch?v=FudOL0-B9Hs
-## 3.USB dan yuklash
+## 3 USB dan yuklash
 Kompyuteringizni o'chiring va Arch linux yozilgan fleshkani kompyuterga qo'ying va BOOT 
 menuga kirib fleshkani tanlab o'ting  keyin birinchi turganiga qo'yib enter bosasiz
-## 4.Disklarni ajratish
+## 4 Disklarni ajratish
 Talab qilinadi kompyuter kabel bilan interntega ulanishi yoki bo'lmasa telefon orqali USB kabel
 ulab telefondan modem bering
 ```bash
@@ -92,7 +92,7 @@ Internet ishlayotgan bo'lsa paketlarni yangilaymiz
 ```bash
 $ sudo pacman -Sy
 ```
-Arch linuxni o'rnatamiz `/mnt`  jildiga 
+ ## Arch linuxni o'rnatamiz `/mnt`  jildiga 
 ```bash
 $ pacstrap /mnt base base-devel linux linux-firmware nano openssh networkmanager netctl
 ```
@@ -120,12 +120,12 @@ $ passwd
 ```
 `New password` deb chiqadi siz parol yozasiz yozgan parolingiz ko'rinmaydi
 `Return New password` deb chiqadi bunga hozir yozgan parolingizni yozasiz
-Tizimga kirish uchun user ochib olishimiz kerak
+ ## Tizimga kirish uchun user ochib olishimiz kerak
 ```bash
 $ useradd -mG whell user_ism
 ```
 `user_ism` degan joyiga userni kiritasiz asosan ism yoki nik
-User uchun parol qo'yamiz
+## User uchun parol qo'yamiz
 ```bash
 $ passwd user_ism
 ```
@@ -137,7 +137,7 @@ qayta yozamiz
 ```bash
 $ EDITOR=nano visudo
 ```
-## visudo filenidan shunaqa kodni topamiz
+## visudo faylidan shunaqa kodni topamiz
 
 -  `root ALL=(ALL) ALL`
 - `##Uncomment to allow members of group wheel to execute any command`
@@ -285,14 +285,18 @@ Internet ishlayotganini teskshirib ko'ring
 $ ping -c 3 google.com
 ```
 ## Tabriklaymiz Sizda Arch linux muvafaqqiyatli o'rnatildi
-Agar barchasini to'gri bajargan bo'lsangiz sizda muammosiz arch linux o'rnatilgan
-Endi navbat Arch linuxga DE (Desktop Environment) o'rnatishdir
-Arch Linuxga DE o'rnatish uchun link https://github.com/ismoilovdevml/Arch-linux-DE
-Qandaydir xato va kamchiliklar bo'lsa yozib qoldiring
-Telegram aloqa: https://t.me/ismoilovdev
-Arch linux bo'yicha qo'llanmalar o'quv qo'llanmalari va foydali postlarni quyidagi kanaldan topishingiz mumkin
-Kanal:  https://t.me/Otabek_Ismoilov
-Muallif: Otabek Ismoilov
+Agar barchasini to'gri bajargan bo'lsangiz sizda muammosiz arch linux o'rnatilgan <br>
+Endi navbat Arch linuxga DE (Desktop Environment) o'rnatishdir <br>
+Arch Linuxga DE o'rnatish uchun link https://github.com/ismoilovdevml/Arch-linux-DE <br>
+Qandaydir xato va kamchiliklar bo'lsa yozib qoldiring <br>
+Telegram aloqa: https://t.me/ismoilovdev <br>
+Arch linux bo'yicha qo'llanmalar o'quv qo'llanmalari va foydali postlarni quyidagi kanaldan topishingiz mumkin <br>
+Kanal:  https://t.me/Otabek_Ismoilov <br>
+Muallif: Otabek Ismoilov <br>
+Community: Xinux <br>
+Websayt: https://xinux.uz  <br>
+Telegram Guruh: https://t.me/xinuxuz  <br>
+
 
 
 
