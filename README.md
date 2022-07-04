@@ -122,7 +122,7 @@ $ passwd
 `Return New password` deb chiqadi bunga hozir yozgan parolingizni yozasiz
  ## Tizimga kirish uchun user ochib olishimiz kerak
 ```bash
-$ useradd -mG whell user_ism
+$ useradd -mG wheel user_ism
 ```
 `user_ism` degan joyiga userni kiritasiz asosan ism yoki nik
 ## User uchun parol qo'yamiz
