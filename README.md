@@ -1,10 +1,10 @@
 # Arch Linux o'rnatish bo'yicha mukammal qo'llanma
 
 Bu qo'llanma O'zbekistonda Arch Linuxni Rivojlantirish maqsadida yozilgan
-Sizlarga yana bitta qo'llanmani tavsiya qilmoqchiman bu video qo'llanma
-Arch linuxni o'rnatishdan oldin shu videoni ko'rishni tavsiya qilardim
-Muallif: Anvar Alimov
-You Tube video link: https://youtu.be/G8WcurParfA
+Sizlarga yana bitta qo'llanmani tavsiya qilmoqchiman bu video qo'llanma <br>
+Arch linuxni o'rnatishdan oldin shu videoni ko'rishni tavsiya qilardim <br>
+Muallif: Anvar Alimov <br>
+You Tube video link: https://youtu.be/G8WcurParfA <br>
 
 ## O'rnatish bosqichlari
 ## Arch Linuxni o'rnatish uchun talablar:
