@@ -243,7 +243,7 @@ $ exit
 ```bash
 $ lsblk
 ```
-sda1 ga bootloader o'rnatamiz
+Kompyuter yonganida Arch linuxni hard diskdan yuklanishi uchun bootloader o'rnatamiz
 ```bash
 $ grub-install --target=x86_64-efi --bootloader-id=GRUB --recheck
 ```

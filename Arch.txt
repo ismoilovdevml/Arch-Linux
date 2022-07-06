@@ -139,7 +139,7 @@ userdan chiqami endi
 $ exit
 Bootloader o'rnatamiz
 $ lsblk
-sda1 ga bootloader o'rnatamiz
+Kompyuter yonganida Arch linuxni hard diskdan yuklanishi uchun bootloader o'rnatamiz
 $ grub-install --target=x86_64-efi --bootloader-id=GRUB --recheck
 Grub o'rnatiladi endi Grubni configuratsiya qilamiz
 $ grub-mkconfig -o /boot/grub/grub.cfg
