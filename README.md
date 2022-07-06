@@ -260,9 +260,9 @@ $ pacman -S neofetch python ranger firefox
 `sshd.service `va `NetworkManager`ni yoqib qo'yamiz
 Asosiy dasturlarni ishga tushirib yoqib qo'yamiz
 ```bash
-$ sytemctl enable sshd.service && sytemctl enable NetworkManager
+$ sudo sytemctl enable sshd.service && sytemctl enable NetworkManager
 ```
-O'rnatuchidan chiqamiz
+O'rnatuvchidan chiqamiz
 ```bash
 $ exit
 $ exit
@@ -275,7 +275,7 @@ Kompyuterni o'chirib yoqamiz
 ```bash
 $ sudo reboot
 ```
-Kompyuter O'chganidan keyin fleshkani olib tashlaysiz Operatsion siztema
+Kompyuter O'chganidan keyin fleshkani olib tashlaysiz Operatsion sistema
 hard diskdan yuklanadi
 Kompyuter yonganidan keyin Grub ishga tushadi va enter bosamiz Arch linux 
 odiy terminal rejimida ishga tushadi
@@ -284,7 +284,7 @@ odiy terminal rejimida ishga tushadi
 ```bash
 $ neofetch
 ```
-Internet ishlayotganini teskshirib ko'ring
+Internet ishlayotganini tekshirib ko'ring
 ```bash
 $ ping -c 3 google.com
 ```
