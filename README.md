@@ -96,6 +96,10 @@ Internet ishlayotgan bo'lsa paketlarni yangilaymiz
 ```bash
 $ sudo pacman -Sy
 ```
+Keyingi bosqichlarda mummo chiqmasligi uchun shuni buyruqni yozing
+```bash
+$ sudo pacman -Sy archlinux-keyring
+```
  ## Arch linuxni o'rnatamiz `/mnt`  jildiga 
 ```bash
 $ pacstrap /mnt base base-devel linux linux-firmware nano openssh networkmanager netctl
