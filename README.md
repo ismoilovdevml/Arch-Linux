@@ -96,7 +96,7 @@ Internet ishlayotgan bo'lsa paketlarni yangilaymiz
 ```bash
 $ sudo pacman -Sy
 ```
-Keyingi bosqichlarda mummo chiqmasligi uchun shuni buyruqni yozing
+Keyingi bosqichlarda mummo chiqmasligi uchun shu buyruqni yozing
 ```bash
 $ sudo pacman -Sy archlinux-keyring
 ```
