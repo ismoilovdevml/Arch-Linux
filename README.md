@@ -264,7 +264,7 @@ $ pacman -S neofetch python ranger firefox
 `sshd.service `va `NetworkManager`ni yoqib qo'yamiz
 Asosiy dasturlarni ishga tushirib yoqib qo'yamiz
 ```bash
-$ sudo sytemctl enable sshd.service && sytemctl enable NetworkManager
+$ sudo systemctl enable sshd.service && systemctl enable NetworkManager
 ```
 O'rnatuvchidan chiqamiz
 ```bash
