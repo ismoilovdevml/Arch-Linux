@@ -27,7 +27,7 @@ menuga kirib fleshkani tanlab o'ting  keyin birinchi turganiga qo'yib enter bosa
 Talab qilinadi kompyuter kabel bilan interntega ulanishi yoki bo'lmasa telefon orqali USB kabel
 ulab telefondan modem bering
 ```bash
-$ lsbk
+$ lsblk
 ```
 `$ lsblk` yordamida disklarni ko'ramiz
 ```bash
