@@ -17,7 +17,12 @@ Kamida 2 GB xotira hajmi bo'lgan USB drayver
 http://mirror.yandex.ru/archlinux/iso/2022.06.01/
 quyidali link orqali .ISO faylini yuklab oling tepadan uchinchi
 ## 2 Arch Linux fleshkaga yozish
-Bunda sizga rufus va BalanaTech kabi dasturlar yordam beradi MBR/GPT
+Bunda sizga rufus va Balena Etcher kabi dasturlar yordam beradi MBR/GPT
+Agar siz linuxda bo'sangiz va terminal orqali yozmoqchi bo'lsangiz quyidagi buyruqni yozing
+```bash
+$ dd bs=4M if=/home/ismoilovdev/Documents/archlinux-x86_64.iso of=/dev/sdb conv=fsync oflag=direct status=progress
+```
+bu yerda siz ISO ga path berasiz bu yerda `/home/ismoilovdev/Document/archlinux-x86_64.iso`
 Bu qo'llanmada GPT yozilgan Arch o'rnatamiz MBR boshqacha 
 MBR uchun https://www.youtube.com/watch?v=FudOL0-B9Hs
 ## 3 USB dan yuklash
