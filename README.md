@@ -22,7 +22,7 @@ Agar siz linuxda bo'sangiz va terminal orqali yozmoqchi bo'lsangiz quyidagi buyr
 ```bash
 $ dd bs=4M if=/home/ismoilovdev/Documents/archlinux-x86_64.iso of=/dev/sdb conv=fsync oflag=direct status=progress
 ```
-bu yerda siz ISO ga path berasiz bu yerda `/home/ismoilovdev/Document/archlinux-x86_64.iso`
+bu yerda siz ISO ga path berasiz bu yerda `/home/ismoilovdev/Document/archlinux-x86_64.iso` <br>
 Bu qo'llanmada GPT yozilgan Arch o'rnatamiz MBR boshqacha 
 MBR uchun https://www.youtube.com/watch?v=FudOL0-B9Hs
 ## 3 USB dan yuklash
