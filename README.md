@@ -32,13 +32,13 @@ Chiqqan ma'lumotlardan eng pastida USB drayver haqida yozilgan bo'ladi turlari `
 
 Bu qo'llanmada GPT yozilgan Arch o'rnatamiz MBR boshqacha 
 [MBR uchun video qo'llanma](https://www.youtube.com/watch?v=FudOL0-B9Hs)
-# 3 USB dan yuklash
+## 3 USB dan yuklash
 Kompyuteringizni o'chiring va Arch linux yozilgan fleshkani kompyuterga qo'ying va BOOT 
 menyuga kirib fleshkani tanlab o'ting  keyin birinchi turganiga qo'yib enter bosasiz
 
 ![alt text](https://937862693-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FSFrNj7gaqbMUSNNqIdQ1%2Fuploads%2FNtWEFRWYvMBvDclF65b4%2Farch1.png?alt=media&token=8ed69d3f-e2e2-42c8-a5aa-7f59877b6031)
 
-# 4 Disklarni ajratish
+## 4 Disklarni ajratish
 Talab qilinadi kompyuter kabel bilan internetga ulanishi yoki bo'lmasa telefon orqali USB kabel
 ulab telefondan modem berilishi kerak.
 ```bash
@@ -59,7 +59,7 @@ $ lsblk
 ```
 `$ lsblk` bilan dislarni ko'razmiz bizda `/dev/sda` ichida `/dev/sda1`,`/dev/sda2`,`/dev/sda3` bo'ladi
 `/dev/sda1` BOOT uchun `/dev/sda2` Swap uchun `/dev/sda3` xotira roor partition uchun
-## Disklarni Formatlash
+## 5 Disklarni Formatlash
 ```bash
 $ mkfs.fat -F32 /dev/sda1
 ```
@@ -76,7 +76,7 @@ ROOT uchun formatlandi`[Y/n]` chiqsa `y` bosamiz
 $ clear
 ```
 Eslatma Kompyuterdagi barcha Operatsion tizimlar o'chib ketti hozir 
-# 6 Jildlarni mountlash
+## 6 Jildlarni mountlash
 `/dev/sda3` ni `/mnt` jildiga ulaymiz
 ```bash
 $ mount /dev/sda3 /mnt
@@ -101,7 +101,7 @@ Disklar shunday ko'rinishi kerak
 `sda1 512M /mnt/boot/EFI
  sda2 RAMga teng [SWAP]
  sda3 /mnt`
-# 7 Arch linuxni asosiy faylarini yuklaymiz
+## 7 Arch linuxni asosiy faylarini yuklaymiz
 `/mnt` jildiga archni o'rtamaiz aytagimdek kabelli internet ulangan bo'lishi kerak
 internte ishlayotganini tekshirish 
 ```bash
@@ -122,7 +122,7 @@ $ pacstrap /mnt base base-devel linux linux-firmware nano openssh networkmanager
 ```bash
 $ clear
 ```
-# 8 Arch linuxni sozlash
+## 8 Arch linuxni sozlash
 fstab faylini generatsiya qilib olamiz
 ```bash
 $ genfstab -U -p /mnt >> /mnt/etc/fstab
