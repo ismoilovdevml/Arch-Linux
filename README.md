@@ -4,16 +4,16 @@ Bu qo'llanma O'zbekistonda Arch Linuxni Rivojlantirish maqsadida yozilgan <br>
 Sizlarga yana bitta qo'llanmani tavsiya qilmoqchiman bu video qo'llanma <br>
 Arch linuxni o'rnatishdan oldin shu videoni ko'rishni tavsiya qilardim <br>
 Muallif: Anvar Alimov <br>
-You Tube video link: https://youtu.be/G8WcurParfA <br>
+[You Tube video](https://youtu.be/G8WcurParfA) <br>
 
 ## O'rnatish bosqichlari
-## Arch Linuxni o'rnatish uchun talablar:
+#Arch Linuxni o'rnatish uchun talablar:
 X86_64 (ya'ni 64 bit) mos keladigan mashina
 Minimal 512 MB RAM (tavsiya qilingan 2 Gb)
 Kamida 1 Gb bo'sh disk maydoni (asosiy foydalanish uchun tavsiya etilgan 20 Gb)
 Faol internet aloqasi
 Kamida 2 GB xotira hajmi bo'lgan USB drayver
-## 1 ISO-ni yuklab oling
+## 1 ISO faylni yuklab oling
 http://mirror.yandex.ru/archlinux/iso/2022.06.01/
 quyidali link orqali .ISO faylini yuklab oling tepadan uchinchi
 ## 2 Arch Linux fleshkaga yozish
@@ -23,14 +23,24 @@ Agar siz linuxda bo'sangiz va terminal orqali yozmoqchi bo'lsangiz quyidagi buyr
 $ dd bs=4M if=/home/ismoilovdev/Documents/archlinux-x86_64.iso of=/dev/sdb conv=fsync oflag=direct status=progress
 ```
 bu yerda siz ISO ga path berasiz bu yerda `/home/ismoilovdev/Document/archlinux-x86_64.iso` <br>
+`of=/dev/sdb` bu yerda mening USB draverim formati sizda boshqacha bo'lishi mumkin buni bilish uchun terminalga root bilan kirib quyidagi buyruqni kiriting, USB drayver kompyuterga ulangan bo'lishi kerak.<br>
+```bash
+$ sudo su 
+$ fdisk -l
+```
+Chiqqan ma'lumotlardan eng pastida USB drayver haqida yozilgan bo'ladi turlari `/dev/sda, /dev/sdb, /dev/sdx`
+
 Bu qo'llanmada GPT yozilgan Arch o'rnatamiz MBR boshqacha 
-MBR uchun https://www.youtube.com/watch?v=FudOL0-B9Hs
-## 3 USB dan yuklash
+[MBR uchun video qo'llanma](https://www.youtube.com/watch?v=FudOL0-B9Hs)
+# 3 USB dan yuklash
 Kompyuteringizni o'chiring va Arch linux yozilgan fleshkani kompyuterga qo'ying va BOOT 
-menuga kirib fleshkani tanlab o'ting  keyin birinchi turganiga qo'yib enter bosasiz
-## 4 Disklarni ajratish
-Talab qilinadi kompyuter kabel bilan interntega ulanishi yoki bo'lmasa telefon orqali USB kabel
-ulab telefondan modem bering
+menyuga kirib fleshkani tanlab o'ting  keyin birinchi turganiga qo'yib enter bosasiz
+
+![alt text](https://937862693-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FSFrNj7gaqbMUSNNqIdQ1%2Fuploads%2FNtWEFRWYvMBvDclF65b4%2Farch1.png?alt=media&token=8ed69d3f-e2e2-42c8-a5aa-7f59877b6031)
+
+# 4 Disklarni ajratish
+Talab qilinadi kompyuter kabel bilan internetga ulanishi yoki bo'lmasa telefon orqali USB kabel
+ulab telefondan modem berilishi kerak.
 ```bash
 $ lsblk
 ```
@@ -66,7 +76,7 @@ ROOT uchun formatlandi`[Y/n]` chiqsa `y` bosamiz
 $ clear
 ```
 Eslatma Kompyuterdagi barcha Operatsion tizimlar o'chib ketti hozir 
-## 6 Jildlarni mountlash
+# 6 Jildlarni mountlash
 `/dev/sda3` ni `/mnt` jildiga ulaymiz
 ```bash
 $ mount /dev/sda3 /mnt
@@ -91,7 +101,7 @@ Disklar shunday ko'rinishi kerak
 `sda1 512M /mnt/boot/EFI
  sda2 RAMga teng [SWAP]
  sda3 /mnt`
-## 7 Arch linuxni asosiy faylarini yuklaymiz
+# 7 Arch linuxni asosiy faylarini yuklaymiz
 `/mnt` jildiga archni o'rtamaiz aytagimdek kabelli internet ulangan bo'lishi kerak
 internte ishlayotganini tekshirish 
 ```bash
@@ -112,7 +122,7 @@ $ pacstrap /mnt base base-devel linux linux-firmware nano openssh networkmanager
 ```bash
 $ clear
 ```
-## 8 Arch linuxni sozlash
+# 8 Arch linuxni sozlash
 fstab faylini generatsiya qilib olamiz
 ```bash
 $ genfstab -U -p /mnt >> /mnt/etc/fstab
@@ -300,15 +310,14 @@ $ ping -c 3 google.com
 ## Tabriklaymiz Sizda Arch linux muvafaqqiyatli o'rnatildi
 Agar barchasini to'gri bajargan bo'lsangiz sizda muammosiz arch linux o'rnatilgan <br>
 Endi navbat Arch linuxga DE (Desktop Environment) o'rnatishdir <br>
-Arch Linuxga DE o'rnatish uchun link https://github.com/ismoilovdevml/Arch-linux-DE <br>
 Qandaydir xato va kamchiliklar bo'lsa yozib qoldiring <br>
-Telegram aloqa: https://t.me/ismoilovdev <br>
+Telegram aloqa: [@ismoilovdev](https://t.me/ismoilovdev) <br>
 Arch linux bo'yicha qo'llanmalar o'quv qo'llanmalari va foydali postlarni quyidagi kanaldan topishingiz mumkin <br>
-Kanal:  https://t.me/Otabek_Ismoilov <br>
+Kanal: [Otabek Ismoilov](https://t.me/Otabek_Ismoilov) <br>
 Muallif: Otabek Ismoilov <br>
 Community: Xinux <br>
-Websayt: https://xinux.uz  <br>
-Telegram Guruh: https://t.me/xinuxuz  <br>
+Websayt: [Xinux.uz](https://xinux.uz) <br>
+Telegram Guruh: [@xinuxuz](https://t.me/xinuxuz)  <br>
 
 
 
