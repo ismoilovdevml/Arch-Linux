@@ -224,3 +224,38 @@ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 Ushbu buyruq fayl tizimi jadvalini yaratadi va uni yangi o'rnatilgan operatsion tizim uchun fayl tizimi jadvali bo'lgan `/mnt/etc/fstab  `fayliga qo'shadi. fstab faylining to'g'ri ekanligiga ishonch hosil qilish muhim, chunki noto'g'ri fstab fayli operatsion tizimning to'g'ri yuklanishiga xalaqit berishi mumkin.
 
+VII. Tizimni sozlash
+
+Asosiy tizim o'rnatilgandan so'ng, tizimni sozlash vaqti keldi. Ushbu bo'limda siz vaqt mintaqasini, klaviatura tartibini, root parolini o'rnatish va yangi foydalanuvchi hisobini yaratishni o'rganasiz.
+
+#### Vaqt mintaqasini sozlash
+
+Vaqt mintaqasini o'rnatish vaqt va sana to'g'ri o'rnatilganligini ta'minlash uchun muhimdir. Vaqt mintaqasini belgilash uchun `timedatectl` buyrug'idan foydalanishingiz mumkin.
+
+```bash
+hwclock --systohc --utc
+```
+`hwclock` buyrug'i tizimingizda qurilma soatini o'rnatish uchun ishlatiladi. `--systohc` opsiyasi qurilma soatini joriy tizim vaqtiga o'rnatish uchun ishlatiladi. `--utc` opsiyasi buyruqqa mahalliy vaqt o'rniga Muvofiqlashtirilgan universal vaqtdan (UTC) foydalanishni aytadi.
+
+```bash
+ln -sf /usr/share/zoneinfo/Asia/Tashkent /etc/localtime
+```
+
+`ln -sf` buyrug'i vaqt mintaqasi fayli `/usr/share/zoneinfo/Asia/Tashkent` va tizim tomonidan mahalliy vaqtni aniqlash uchun foydalaniladigan `/etc/localtime` fayli o'rtasida ramziy bog'lanishni yaratish uchun ishlatiladi. Buni qilish orqali siz tizimingiz uchun vaqt mintaqasini Asia/Tashkentga o'rnatasiz.
+
+
+Ushbu buyruqlarni birgalikda ishlatish orqali siz qurilma soatini joriy tizim vaqtiga UTCda o'rnatasiz va tizimingiz uchun Asia/Tashkent uchun vaqt mintaqasini belgilaysiz.
+
+#### Klaviatura tilini sozlash
+Klaviatura tilini o'rnatish uchun siz `localectl ` buyrug'idan foydalanishingiz mumkin. Masalan, klaviatura tilini `en_US.UTF-8`ga o'rnatish uchun siz localectl buyrug'idan foydalanishingiz mumkin. Mana kod:
+
+```bash
+localectl set-keymap en_US.UTF-8
+```
+Bu klaviatura tartibini `en_US.UTF-8` ga o'rnatadi. localectl buyrug'i tizim mahalliy sozlamalarini boshqarish uchun ishlatiladi. set-keymap opsiyasidan foydalanib, siz foydalanmoqchi bo'lgan klaviatura tartibini belgilashingiz mumkin.
+
+Agar siz OS tilini ham o'rnatishingiz kerak bo'lsa, siz localectl ning set-locale sozlash opsiyasidan foydalanishingiz mumkin:
+
+```bash
+localectl set-locale LANG=en_US.UTF-8
+```
