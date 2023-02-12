@@ -152,3 +152,43 @@ mkswap /dev/sda2
 mkfs.ext4 /dev/sda3
 ```
 
+
+### Bo'limlarni ulash mountlash
+
+Bo'limlarni mountlash zarur, chunki qattiq disk diskda ma'lumotlarni o'qish va yozish uchun operatsion tizimga kirish imkoniyatiga ega bo'lishi kerak. Qattiq disk qismlarga bo'linganda, u turli maqsadlarda ishlatilishi mumkin bo'lgan alohida bo'limlarga bo'linadi. Har bir bo'lim alohida disk sifatida ko'rib chiqiladi va unga kirish uchun fayl tizimidagi directoryga mount qilinishi kerak.
+
+Odatda `/` sifatida belgilangan asosiy bo'lim fayl tizimining ildizidir va barcha kerakli tizim fayllari, dasturlari va ma'lumotlarini o'z ichiga oladi. Operatsion tizimni qattiq diskka o'rnatish uchun bo'limlarni formatlash va keyin fayl tizimidagi tegishli directorylarga mountlash kerak.
+
+Masalan, Arch Linuxda /dev/sda3 bo'limi mount qilinayotgan yangi fayl tizimining ildizi bo'lib xizmat qiluvchi /mnt directorysiga mountlanadi. EFI tizim bo'limi bo'lgan /dev/sda1 bo'limi /mnt/boot/EFI directorysiga mountlanadi, bu EFI yuklash fayllari saqlanadigan joydir. Swap bo'limi bo'lgan /dev/sda2 bo'limi yetarli RAM mavjud bo'lmaganda ma'lumotlarni vaqtincha saqlash uchun ishlatiladigan swap fayl tizimiga mountlanadi.
+
+#### /dev/sda1 mountlash
+/mnt jildi ichida boot/EFI jildini ochamiz:
+
+```bash
+mkdir -p /mnt/boot/EFI
+```
+
+Bu buyruq operatsion tizimni yuklash uchun zarur bo'lgan boot loader va boshqa tizim fayllarini saqlash uchun zarur bo'lgan EFI tizimi bo'limi uchun directory yaratadi. `-p` opsiyasi, agar ular allaqachon mavjud bo'lmasa, asosiy directorylarni yaratish uchun ham ishlatiladi.
+
+```bash
+mount /dev/sda1 /mnt/boot/EFI
+```
+
+Buyrug'i EFI System bo'limini yangi yaratilgan directoryga mountlash uchun ishlatiladi. Bu operatsion tizimga o'rnatish jarayonida va tizim o'rnatilgandan keyin EFI tizimi bo'limidagi saqlash joyiga kirish va undan foydalanish imkonini beradi.
+
+#### /dev/sda2 mountlash
+
+Linux Swap bo'limini mountlash uchun quyidagi buyruqdan foydalaniladi:
+
+```bash
+mount /dev/sda2 /mnt
+```
+Linux Swap bo'limi operatsion tizim tomonidan virtual xotira sifatida ishlatiladi. Tizimda jismoniy xotira (RAM) tugagach, u swap boʻlimidan vaqtincha operativ xotirada saqlanadigan maʼlumotlarni vaqtincha saqlash uchun foydalanishi mumkin.
+
+#### /dev/sda3 mountlash
+
+```bash
+mount /dev/sda3 /mnt
+```
+
+buyrug'i operatsion tizimning asosiy bo'limi bo'lgan ildiz qismini mountlash uchun ishlatiladi. Ildiz bo'limi butun fayl tizimini, shu jumladan /home, /usr, /var va boshqalar kabi barcha boshqa directorylarni o'z ichiga oladi.
