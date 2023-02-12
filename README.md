@@ -100,12 +100,22 @@ Swap bo'lim ochamiz Kompyuter RAM ga teng yoki yarmiga teng holda swap ochamiz. 
 Ext4 Linux fayl tizimining bo'limi operatsion tizimning ishlashi uchun zarur bo'lgan barcha fayllarni o'z ichiga olgan ildiz(root) directoryni saqlash uchun ishlatiladi. Ildiz bo'limi odatda tizimdagi eng katta bo'lim bo'lib, u erda ma'lumotlaringiz va fayllaringizning aksariyati saqlanadi.
 Linux fayl tizimi bo'limini bo'lishuchun `ext4` formatda xotira beramiz typega `Linux file system` qo'yamiz. O'zgarishlarni saqlash uchun `Write` bosib `yes` yozib `enter` bosamiz keyin `Quit` bosib chiqib ketamiz.
 
-```bash
-$ clear
-```
-Disklarni Ko'ramiz
+Bo'limlarni tekshirib Ko'ramiz.
+
 ```bash
 $ lsblk
+
 ```
-`$ lsblk` bilan dislarni ko'razmiz bizda `/dev/sda` ichida `/dev/sda1`,`/dev/sda2`,`/dev/sda3` bo'ladi
-`/dev/sda1` BOOT uchun `/dev/sda2` Swap uchun `/dev/sda3` xotira roor partition uchun
+$ lsblk bilan bo'limlarni ko'razmiz bizda `/dev/sda` ichida `/dev/sda1`,`/dev/sda2`va `/dev/sda3` bo'lishi kerak.
+
+#### /dev/sda1
+
+Bu tizimdagi birinchi xotira qurilmasidagi bo'lim (sda bilan ifodalanadi) va u odatda EFI tizim bo'limi sifatida ishlatiladi. EFI tizim bo'limi - bu tizimni yuklash uchun zarur bo'lgan boot loader va tizim yordam dasturlarini o'z ichiga olgan bo'lim. Ushbu bo'lim odatda `FAT32` fayl tizimi sifatida formatlanadi va odatda xotira qurilmasining boshida joylashgan.
+
+#### /dev/sda2
+
+Bu tizimdagi birinchi xotira qurilmasidagi bo'lim (sda bilan ifodalanadi) va  u Linux swap bo'limi sifatida ishlatiladi. Linux Swap Partition tizimi uchun virtual xotira sifatida ishlatiladi va u tizimda jismoniy xotira (RAM) tugashi bilan foydalaniladi. Ushbu bo'lim odatda xotira qurilmasining oxirida joylashgan bo'lib, u swap fayl tizimi sifatida formatlanadi.
+
+#### /dev/sda3
+
+Bu tizimdagi birinchi xotira qurilmasi (sda bilan ifodalangan) bo'limi bo'lib, u ildiz bo'limi sifatida ishlatiladi. Ildiz bo'limi tizimning asosiy bo'limi bo'lib, u operatsion tizimning ishlashi uchun zarur bo'lgan barcha fayllarni o'z ichiga oladi. Ushbu bo'lim odatda ext4 fayl tizimi sifatida formatlanadi va odatda tizimdagi eng katta bo'lim hisoblanadi. Ildiz bo'limi fayl tizimining ildizi bo'lgan `/` directorysiga o'rnatiladi.
