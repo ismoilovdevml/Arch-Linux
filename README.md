@@ -46,7 +46,8 @@ fdisk -l
 ```
 Chiqqan ma'lumotlardan eng pastida USB drayver haqida yozilgan bo'ladi turlari `/dev/sda, /dev/sdb, /dev/sdx` 
 
-USB orqali yuklash: yuklanadigan USB drayverini yaratganingizdan so'ng, kompyuteringizni USB bilan yuklashingiz kerak. Buni amalga oshirish uchun USB drayverini kompyuteringizga joylashtiring va uni qayta ishga tushiring. Kompyuteringizning BIOS yoki UEFI konfiguratsiyasiga qarab, yuklash menyusiga kirish va yuklash qurilmasi sifatida USB drayverini tanlash uchun tugmani (masalan, F12 yoki Esc) bosishingiz kerak bo'ladi.
+#### USB orqali yuklash
+Yuklanadigan USB drayverini yaratganingizdan so'ng, kompyuteringizni USB bilan yuklashingiz kerak. Buni amalga oshirish uchun USB drayverini kompyuteringizga joylashtiring va uni qayta ishga tushiring. Kompyuteringizning BIOS yoki UEFI konfiguratsiyasiga qarab, yuklash menyusiga kirish va yuklash qurilmasi sifatida USB drayverini tanlash uchun tugmani (masalan, F12 yoki Esc) bosishingiz kerak bo'ladi.
 
 ![alt text](https://www.wimware.com/design/how-to/boot-from-cd-dvd/Boot-options-entry-key.png)
 
@@ -54,4 +55,18 @@ Rasmda keng tarqalgan kompyuter brednlarining boot menuga kirish usullari
 
 Boot menuga kiring va USB ni tanlab enter bosing
 
-Internetga ulanish: Sozlaganingizga qarab, Arch Linux o'rnatilishini yakunlash uchun internetga ulanishingiz kerak bo'ladi. O'rnatish jarayonida yangilanishlar yoki paketlarni yuklab olishingiz kerak bo'lsa, bu ayniqsa muhimdir. Internetga ulanish uchun simli internet yoki simli internet bo'lmasa USB kabel bilan telefondan USB Modemni yoqish va yoki  Wi-Fi tarmog'iga ulashingiz mumkin.
+#### Internetga ulanish
+
+Sozlaganingizga qarab, Arch Linux o'rnatilishini yakunlash uchun internetga ulanishingiz kerak bo'ladi. O'rnatish jarayonida yangilanishlar yoki paketlarni yuklab olishingiz kerak bo'lsa, bu ayniqsa muhimdir. Internetga ulanish uchun simli internet yoki simli internet bo'lmasa USB kabel bilan telefondan USB Modemni yoqish va yoki  Wi-Fi tarmog'iga ulashingiz mumkin.
+
+## IV. Diskni qismlarga(partition) ajratish
+
+Bo'limlarga(partition) bo'lish tushuntirish: Bo'limga bo'lish - bu qattiq diskni bir nechta bo'limlarga bo'lish jarayoni bo'lib, ularning har biri har xil turdagi ma'lumotlarni saqlash yoki turli xil operatsion tizimlarni o'rnatish uchun ishlatilishi mumkin. Bo'limlarga ajratish Arch Linux-ni o'rnatish jarayonida muhim qadamdir, chunki u tizimning turli qismlariga ma'lum hajmdagi saqlash joyini ajratish imkonini beradi.
+
+#### Turli qismlarga ajratish sxemalari
+
+Zamonaviy tizimlarda ikkita asosiy bo'lim sxemasi qo'llaniladi: MBR (Master Boot Record) va GPT (GUID Partition Table). MBR ikkitadan kattasi bo'lib, to'rtta asosiy yoki uchta asosiy bo'lim va kengaytirilgan qismni qo'llab-quvvatlaydi. Boshqa tomondan, GPT deyarli cheksiz miqdordagi bo'limlarni qo'llab-quvvatlaydi va UEFI-ga asoslangan tizimlar uchun talab qilinadi.
+
+#### Cfdisk yoki fdisk kabi tool yordamida bo'limlarni yaratish
+
+Qattiq diskingizda bo'limlarni yaratish uchun cfdisk yoki fdisk kabi tooldan foydalanishingiz mumkin. Ushbu tollar diskda bo'limlarni yaratish, o'chirish va o'zgartirish imkonini beradi. Bo'limlarni yaratishda kamida ikkita bo'lim yaratish tavsiya etiladi: biri ildiz(root) `/` fayl tizimi uchun, ikkinchisi esa swap uchun. Ildiz bo'limi kamida 20 GB bo'lishi kerak, swap bo'limi esa tizimingizdagi RAM miqdoriga teng yoki undan biroz kattaroq bo'lishi kerak. Cfdisk yoki fdisk dan foydalanganda ehtiyot bo'lish kerak, chunki noto'g'ri bo'limlar o'chirilsa yoki o'zgartirilsa, ma'lumotlaringizga doimiy ravishda zarar etkazishi mumkin.
