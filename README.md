@@ -70,3 +70,42 @@ Zamonaviy tizimlarda ikkita asosiy bo'lim sxemasi qo'llaniladi: MBR (Master Boot
 #### Cfdisk yoki fdisk kabi tool yordamida bo'limlarni yaratish
 
 Qattiq diskingizda bo'limlarni yaratish uchun cfdisk yoki fdisk kabi tooldan foydalanishingiz mumkin. Ushbu tollar diskda bo'limlarni yaratish, o'chirish va o'zgartirish imkonini beradi. Bo'limlarni yaratishda kamida ikkita bo'lim yaratish tavsiya etiladi: biri ildiz(root) `/` fayl tizimi uchun, ikkinchisi esa swap uchun. Ildiz bo'limi kamida 20 GB bo'lishi kerak, swap bo'limi esa tizimingizdagi RAM miqdoriga teng yoki undan biroz kattaroq bo'lishi kerak. Cfdisk yoki fdisk dan foydalanganda ehtiyot bo'lish kerak, chunki noto'g'ri bo'limlar o'chirilsa yoki o'zgartirilsa, ma'lumotlaringizga doimiy ravishda zarar etkazishi mumkin.
+
+## V. Bo'limlarni formatlash
+
+#### Formatlash haqida tushuntirish
+
+Formatlash - fayl tizimi tomonidan foydalanish uchun bo'limni tayyorlash jarayoni. Formatlash jarayonida bo'limda ma'lumotlarning qanday saqlanishi va tashkil etilishini aniqlaydigan fayl tizimi yaratiladi.
+
+#### Bo'limlarda fayl tizimini yaratish
+
+Arch Linuxda foydalanish mumkin bo'lgan bir nechta fayl tizimlari mavjud, jumladan ext4, btrfs va xfs. Ildiz bo'limi uchun eng ko'p ishlatiladigan fayl tizimi ext4, btrfs va xfs esa ilg'or foydalanuvchilar uchun mashhur tanlovdir. Bo'limda fayl tizimini yaratish uchun siz quyidagi buyruqdan foydalanishingiz mumkin:
+
+`lsblk` buyru'gi yordamida bo'limlarni ko'ramiz
+```bash
+$ lsblk
+```
+Endi esa cfdisk dasturi orqali diskni bo'limlarga bo'lamiz. 
+
+Eslatma: Agar sizda NVME2 SSD bo'lsa sizda `/dev/nvme0n1` bo'ladi HDD yoki SATA bo'lsa sizda `/dev/sda ` bo'ladi
+```bash
+$ cfdisk --zero /dev/sda
+```
+Bu yerdan chiqqan bo'limda GPT ni bosib o'tamiz yangi bo'lim ochamiz bunga `512M` berib type ga `EFI sytem` beramiz. EFI tizimi bo'limi `/boot/efi` directorysiga mount qilinishi va hajmi 512 MB bo'lishi kerak.
+
+
+Linux swap bo'limi tizimni qo'shimcha virtual xotira bilan ta'minlash uchun ishlatiladi, bu sizning operativ xotirangiz cheklangan bo'lsa, ayniqsa muhimdir. Swap bo'limi tizimda jismoniy xotira tugashi bilan foydalaniladi va tizim ishga tushganda u avtomatik ravishda faollashadi.
+Swap bo'lim ochamiz Kompyuter RAM ga teng yoki yarmiga teng holda swap ochamiz. Masalan 4GB RAM 4GB swap yoki 2GB swap disklar bo'linayotganda `GB` o'rnga `G` yoziladi typega `Linux Swap` beramiz.
+
+Ext4 Linux fayl tizimining bo'limi operatsion tizimning ishlashi uchun zarur bo'lgan barcha fayllarni o'z ichiga olgan ildiz(root) directoryni saqlash uchun ishlatiladi. Ildiz bo'limi odatda tizimdagi eng katta bo'lim bo'lib, u erda ma'lumotlaringiz va fayllaringizning aksariyati saqlanadi.
+Linux fayl tizimi bo'limini bo'lishuchun `ext4` formatda xotira beramiz typega `Linux file system` qo'yamiz. O'zgarishlarni saqlash uchun `Write` bosib `yes` yozib `enter` bosamiz keyin `Quit` bosib chiqib ketamiz.
+
+```bash
+$ clear
+```
+Disklarni Ko'ramiz
+```bash
+$ lsblk
+```
+`$ lsblk` bilan dislarni ko'razmiz bizda `/dev/sda` ichida `/dev/sda1`,`/dev/sda2`,`/dev/sda3` bo'ladi
+`/dev/sda1` BOOT uchun `/dev/sda2` Swap uchun `/dev/sda3` xotira roor partition uchun
