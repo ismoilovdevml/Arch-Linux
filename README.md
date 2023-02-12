@@ -192,3 +192,30 @@ mount /dev/sda3 /mnt
 ```
 
 buyrug'i operatsion tizimning asosiy bo'limi bo'lgan ildiz qismini mountlash uchun ishlatiladi. Ildiz bo'limi butun fayl tizimini, shu jumladan /home, /usr, /var va boshqalar kabi barcha boshqa directorylarni o'z ichiga oladi.
+
+## VI. Asosiy tizimni o'rnatish
+
+Arch Linux-dagi asosiy tizim funksional operatsion tizimga ega bo'lish uchun zarur bo'lgan minimal komponentlar to'plamini anglatadi. Bunga Linux kerneli, tizim kutubxonalari, asosiy utilitalar va tollari va boot loader kiradi.
+
+Asosiy tizimni o'rnatish uchun `pacstrap` buyrug'i ishga tushiriladi. Ushbu buyruq Arch Linux orepositoriyalaridan kerakli paketlar va komponentlarni yuklab oladi va o'rnatadi. U quyidagi tarzda amalga oshiriladi:
+
+```bash
+pacman -S grub efibootmgr dosfstools mtools os-prober intel-ucode nano
+```
+Ushbu buyruq tizimingizda Arch Linuxni yuklash va sozlash uchun zarur bo'lgan bir nechta paketlarni o'rnatish uchun ishlatiladi. Bu yerda har bir paketning tushuntiramiz:
+
+* `grub:` Bu tizimingizda yuklash jarayonini boshqarish uchun ishlatiladigan GRand Unified Bootloader.
+
+* `efibootmgr:` Bu EFI (Extensible Firmware Interface) yuklash menejerida yuklash yozuvlarini boshqarish uchun tooldir.
+
+* `dosfstools:` Ushbu paket FAT fayl tizimi bilan ishlash uchun tollarni taqdim etadi.
+
+* `mtools:` Bu MS-DOS fayllari bilan ishlash uchun yordamchi dasturlar to'plami.
+
+* `os-prober:` Bu tizimingizdagi boshqa operatsion tizimlarni aniqlash uchun vositadir.
+
+* `intel-ucode` yoki `amd-ucode` Ushbu paket Intel protsessorlari va AMD  protsessorlari uchun mikrokod yangilanishlarini taqdim etadi.
+
+* `nano:` Bu tizimdagi fayllarni tahrirlash uchun ishlatilishi mumkin bo'lgan matn muharriri.
+
+Ushbu paketlar tizimingizda Arch Linuxni to'g'ri sozlash va sozlash uchun zarurdir.
