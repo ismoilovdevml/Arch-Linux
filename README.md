@@ -104,7 +104,6 @@ Bo'limlarni tekshirib Ko'ramiz.
 
 ```bash
 $ lsblk
-
 ```
 $ lsblk bilan bo'limlarni ko'razmiz bizda `/dev/sda` ichida `/dev/sda1`,`/dev/sda2`va `/dev/sda3` bo'lishi kerak.
 
@@ -114,8 +113,42 @@ Bu tizimdagi birinchi xotira qurilmasidagi bo'lim (sda bilan ifodalanadi) va u o
 
 #### /dev/sda2
 
-Bu tizimdagi birinchi xotira qurilmasidagi bo'lim (sda bilan ifodalanadi) va  u Linux swap bo'limi sifatida ishlatiladi. Linux Swap Partition tizimi uchun virtual xotira sifatida ishlatiladi va u tizimda jismoniy xotira (RAM) tugashi bilan foydalaniladi. Ushbu bo'lim odatda xotira qurilmasining oxirida joylashgan bo'lib, u swap fayl tizimi sifatida formatlanadi.
+Bu tizimdagi birinchi xotira qurilmasidagi bo'lim (sda bilan ifodalanadi) va  u Linux swap bo'limi sifatida ishlatiladi. Linux Swap Partition tizimi uchun virtual xotira sifatida ishlatiladi va u tizimda jismoniy xotira (RAM) tugashi bilan foydalaniladi. Ushbu bo'lim odatda xotira qurilmasining oxirida joylashgan bo'lib, u `swap` fayl tizimi sifatida formatlanadi.
 
 #### /dev/sda3
 
-Bu tizimdagi birinchi xotira qurilmasi (sda bilan ifodalangan) bo'limi bo'lib, u ildiz bo'limi sifatida ishlatiladi. Ildiz bo'limi tizimning asosiy bo'limi bo'lib, u operatsion tizimning ishlashi uchun zarur bo'lgan barcha fayllarni o'z ichiga oladi. Ushbu bo'lim odatda ext4 fayl tizimi sifatida formatlanadi va odatda tizimdagi eng katta bo'lim hisoblanadi. Ildiz bo'limi fayl tizimining ildizi bo'lgan `/` directorysiga o'rnatiladi.
+Bu tizimdagi birinchi xotira qurilmasi (sda bilan ifodalangan) bo'limi bo'lib, u ildiz bo'limi sifatida ishlatiladi. Ildiz bo'limi tizimning asosiy bo'limi bo'lib, u operatsion tizimning ishlashi uchun zarur bo'lgan barcha fayllarni o'z ichiga oladi. Ushbu bo'lim odatda `ext4` fayl tizimi sifatida formatlanadi va odatda tizimdagi eng katta bo'lim hisoblanadi. Ildiz bo'limi fayl tizimining ildizi bo'lgan `/` directorysiga o'rnatiladi.
+
+### Bo'limlarni Formatlash
+
+Bo'limlarni formatlash bo'limda fayl tizimini yaratishni o'z ichiga oladi, bu operatsion tizim xotira maydoniga kirishi va undan foydalanishi uchun zarurdir. Fayl tizimi - bu xotira qurilmasidagi ma'lumotlarni tashkil qilish usuli bo'lib, operatsion tizim uchun fayllar va directorylarga kirish va boshqarish uchun tuzilmani ta'minlaydi.
+
+Bo'limlarni formatlashsiz, operatsion tizim xotira maydoniga kira olmaydi va bo'limdagi ma'lumotlar operatsion tizim tushunadigan tarzda tashkil etilmaydi.
+
+Bundan tashqari, bo'limni formatlash siz foydalanmoqchi bo'lgan fayl tizimining turini tanlash imkonini beradi. Turli fayl tizimlari katta fayllarni qo'llab-quvvatlash, oniy tasvirlarni qo'llab-quvvatlash yoki ma'lumotlarni zichlashni qo'llab-quvvatlash kabi turli xil xususiyatlarga ega. Ehtiyojlaringizga mos fayl tizimini tanlab, tizimingizning ishlashi va funksionalligini optimallashtirishingiz mumkin.
+
+#### /dev/sda1 formatlash
+
+/dev/sda1 qismini EFI tizim bo'limi sifatida formatlash uchun siz quyidagi buyruqdan foydalanishingiz mumkin:
+
+```bash
+mkfs.fat -F32 /dev/sda1
+```
+Eslatma: -F32 opsiyasi fayl tizimini FAT32 sifatida belgilash uchun ishlatiladi.
+
+#### /dev/sda2 formatlash
+
+/dev/sda2 qismini Linux swap bo'limi sifatida formatlash uchun siz quyidagi buyruqdan foydalanishingiz mumkin:
+
+```bash
+mkswap /dev/sda2
+```
+
+#### /dev/sda3 formatlash
+
+/dev/sda3 qismini ext4 Linux fayl tizimi sifatida formatlash uchun quyidagi buyruqdan foydalanishingiz mumkin:
+
+```bash
+mkfs.ext4 /dev/sda3
+```
+
