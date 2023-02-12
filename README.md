@@ -200,22 +200,27 @@ Arch Linux-dagi asosiy tizim funksional operatsion tizimga ega bo'lish uchun zar
 Asosiy tizimni o'rnatish uchun `pacstrap` buyrug'i ishga tushiriladi. Ushbu buyruq Arch Linux orepositoriyalaridan kerakli paketlar va komponentlarni yuklab oladi va o'rnatadi. U quyidagi tarzda amalga oshiriladi:
 
 ```bash
-pacman -S grub efibootmgr dosfstools mtools os-prober intel-ucode nano
+ pacstrap /mnt base base-devel linux linux-firmware nano openssh networkmanager netctl
+ ```
+Yuqoridagi satrdagi `pacstrap` buyrug'i `/mnt` da o'rnatilgan fayl tizimiga asosiy tizim va kerakli paketlarni o'rnatish uchun ishlatiladi. /mnt katalogi asosiy tizimni o'rnatish uchun maqsadli directory sifatida ishlatiladi.
+
+/mnt dan keyin ko'rsatilgan paketlar asosiy tizimning tarkibiy qismlari bo'lib, ular quyidagilarni o'z ichiga oladi:
+
+* `base:` Funktsional tizim uchun zarur bo'lgan asosiy paketlar.
+* `base-devel:` manbadan boshqa paketlarni yaratish uchun zarur bo'lgan ishlab chiqish paketlari.
+* `linux:` Linux kerneli.
+* `linux-firmware:` Linux kerneli uchun zarur bo'lgan mikrodastur(firmware) fayllari.
+* `nano:` oddiy matn muharriri.
+* `openssh:` Tarmoq orqali xavfsiz aloqa uchun foydalaniladigan Secure Shell (SSH) protokolining amalga oshirilishi.
+* `networkmanager:` tarmoq ulanishlarini sozlash va boshqarish imkonini beruvchi tarmoq ulanishi menejeri.
+* `netctl:` Arch Linux-da tarmoq ulanishlarini sozlash uchun CLI vositasi.
+Belgilangan paketlar Arch Linux paketi repositoriyalaridan yuklab olinadi va /mnt fayl tizimiga o'rnatiladi.
+
+
+Asosiy tizimni o'rnatish tugallangandan so'ng, fstab faylini yaratish kerak. fstab fayli yoki fayl tizimi jadvali operatsion tizim tomonidan yuklash vaqtida qaysi fayl tizimlarini o'rnatish kerakligini va ularni qayerga o'rnatish kerakligini aniqlash uchun ishlatiladi. fstab fayli quyidagi buyruq yordamida yaratilishi mumkin:
+
+```bash
+genfstab -U /mnt >> /mnt/etc/fstab
 ```
-Ushbu buyruq tizimingizda Arch Linuxni yuklash va sozlash uchun zarur bo'lgan bir nechta paketlarni o'rnatish uchun ishlatiladi. Bu yerda har bir paketning tushuntiramiz:
+Ushbu buyruq fayl tizimi jadvalini yaratadi va uni yangi o'rnatilgan operatsion tizim uchun fayl tizimi jadvali bo'lgan `/mnt/etc/fstab  `fayliga qo'shadi. fstab faylining to'g'ri ekanligiga ishonch hosil qilish muhim, chunki noto'g'ri fstab fayli operatsion tizimning to'g'ri yuklanishiga xalaqit berishi mumkin.
 
-* `grub:` Bu tizimingizda yuklash jarayonini boshqarish uchun ishlatiladigan GRand Unified Bootloader.
-
-* `efibootmgr:` Bu EFI (Extensible Firmware Interface) yuklash menejerida yuklash yozuvlarini boshqarish uchun tooldir.
-
-* `dosfstools:` Ushbu paket FAT fayl tizimi bilan ishlash uchun tollarni taqdim etadi.
-
-* `mtools:` Bu MS-DOS fayllari bilan ishlash uchun yordamchi dasturlar to'plami.
-
-* `os-prober:` Bu tizimingizdagi boshqa operatsion tizimlarni aniqlash uchun vositadir.
-
-* `intel-ucode` yoki `amd-ucode` Ushbu paket Intel protsessorlari va AMD  protsessorlari uchun mikrokod yangilanishlarini taqdim etadi.
-
-* `nano:` Bu tizimdagi fayllarni tahrirlash uchun ishlatilishi mumkin bo'lgan matn muharriri.
-
-Ushbu paketlar tizimingizda Arch Linuxni to'g'ri sozlash va sozlash uchun zarurdir.
