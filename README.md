@@ -317,4 +317,20 @@ Pacman paket menejeri yordamida quyidagi buyruq bilan bootloaderni o'rnating:
 pacman -S grub efibootmgr dosfstools mtools os-prober intel-ucode
 ```
 
+Ushbu buyruq Arch Linux tizimida bootloader moslamasi bilan bog'liq bir nechta paketlarni o'rnatish uchun ishlatiladi. O'rnatilgan paketlar quyidagilar:
+
+* `grub` (GRand Unified Bootloader): Bu o'rnatilgan operatsion tizimlar ro'yxatidan yuklash uchun operatsion tizimni tanlash imkonini beruvchi yuklovchi bootloader.
+
+* `efibootmgr` Bu UEFI (Unified Extensible Firmware Interface) asosidagi tizimlarda EFI(Unified Extensible Firmware Interface) tizim qismidagi yuklash yozuvlarini boshqarish uchun foydalaniladigan vositadir.
+
+* `dosfstools` Ushbu paket odatda UEFI tizimlarida yuklanadigan bo'limlar uchun ishlatiladigan MS-DOS FAT fayl tizimlarini yaratish va tekshirish uchun yordamchi dasturlarni taqdim etadi.
+
+* `tools` Ushbu paket MS-DOS formatidagi disklar va disk tasvirlari bilan ishlash uchun yordamchi dasturlar to'plamini taqdim etadi.
+
+* `os-prober` Ushbu vosita boshqa operatsion tizimlar va bir xil mashinada o'rnatilgan bootloaderlarni aniqlash uchun ishlatiladi.
+
+* `ntel-ucode` yoki `amd-ucode` Ushbu paket tizim barqarorligi va xavfsizligini yaxshilashga yordam beradigan Intel protsessorlari va AMD protsessorlari uchun mikrokod yangilanishlarini o'z ichiga oladi.
+
+`pacman` buyrug'i paketlarni Arch Linux tizimiga o'rnatish uchun ishlatiladi. `-S` opsiyasi paketlarni o'rnatish kerakligini va undan keyin ko'rsatilgan paket nomlari o'rnatilishi kerak bo'lgan paketlarni belgilaydi.
+
 
