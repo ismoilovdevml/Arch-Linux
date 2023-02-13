@@ -334,3 +334,20 @@ Ushbu buyruq Arch Linux tizimida bootloader moslamasi bilan bog'liq bir nechta p
 `pacman` buyrug'i paketlarni Arch Linux tizimiga o'rnatish uchun ishlatiladi. `-S` opsiyasi paketlarni o'rnatish kerakligini va undan keyin ko'rsatilgan paket nomlari o'rnatilishi kerak bo'lgan paketlarni belgilaydi.
 
 
+#### Bootloaderni konfigratsiya qilish
+
+```bash
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
+```
+`grub-install` buyrug'i GRUB bootloader moslamasini o'rnatish uchun ishlatiladi. `--target=x86_64-efi` opsiyasi maqsadli arxitektura `x86_64` ekanligini va bootloader moslamasi UEFI rejimida o'rnatilishi kerakligini bildiradi. `--efi-directory=/boot/EFI` opsiyasi EFI yuklash fayllari saqlanishi kerak bo'lgan directoryni belgilaydi, bu holda, `/boot/EFI`. `--bootloader-id=GRUB` opsiyasi UEFI yuklash menejerida bootloader moslamasi uchun ishlatilishi kerak bo'lgan nomni belgilash uchun ishlatiladi.
+
+Ushbu buyruq UEFI firmwaredan foydalanadigan Arch Linux tizimi uchun GRUB-ni bootloader vositasi sifatida o'rnatish uchun ishlatiladi. GRUB - bu bir nechta operatsion tizimlarni yuklashni qo'llab-quvvatlaydigan va Linux tizimlarida keng qo'llaniladigan mashhur bootloader. grub-install buyrug'i bilan ta'minlangan variantlar maqsadli arxitekturani, EFI bootloader fayllarining joylashuvini va UEFI boot menejerida bootloader nomini belgilash uchun ishlatiladi.
+
+#### GRUB konfiguratsiya faylini yaratish
+
+```bash
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+`grub-mkconfig` buyrug'i GRUB bootloader konfiguratsiya faylini yaratadi. Ushbu fayl tizimning yuklash parametrlarini, jumladan, yuklash uchun mavjud bo'lgan operatsion tizimlarni, yuklash uchun standart operatsion tizimni va standart boot timeout kabi boshqa variantlarni belgilaydi.
+
+`-o` opsiyasi chiqish(output) faylini belgilaydi, bu holda u `/boot/grub/grub.cfg`. Bu fayl `/etc/default/grub` va `/etc/grub.d` directorydagi boshqa konfiguratsiya fayllaridagi sozlamalar asosida yaratilgan.
