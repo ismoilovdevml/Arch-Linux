@@ -247,15 +247,25 @@ ln -sf /usr/share/zoneinfo/Asia/Tashkent /etc/localtime
 Ushbu buyruqlarni birgalikda ishlatish orqali siz qurilma soatini joriy tizim vaqtiga UTCda o'rnatasiz va tizimingiz uchun Asia/Tashkent uchun vaqt mintaqasini belgilaysiz.
 
 #### Klaviatura tilini sozlash
-Klaviatura tilini o'rnatish uchun siz `localectl ` buyrug'idan foydalanishingiz mumkin. Masalan, klaviatura tilini `en_US.UTF-8`ga o'rnatish uchun siz localectl buyrug'idan foydalanishingiz mumkin. Mana kod:
+
+Arch Linux-da klaviatura tartibini o'rnatish uchun `/etc/vconsole.conf` faylini tahrirlashingiz kerak. Masalan, klaviatura tartibini `en_US.UTF-8` ga o'rnatish uchun siz quyidagilarni bajarasiz:
 
 ```bash
-localectl set-keymap en_US.UTF-8
-```
-Bu klaviatura tartibini `en_US.UTF-8` ga o'rnatadi. localectl buyrug'i tizim mahalliy sozlamalarini boshqarish uchun ishlatiladi. set-keymap opsiyasidan foydalanib, siz foydalanmoqchi bo'lgan klaviatura tartibini belgilashingiz mumkin.
+echo "KEYMAP=en_US.UTF-8" > /etc/vconsole.conf
+````
+#### OS tilini tanlash va o'rnatish
 
-Agar siz OS tilini ham o'rnatishingiz kerak bo'lsa, siz localectl ning set-locale sozlash opsiyasidan foydalanishingiz mumkin:
+Operatsion tizim tilini o'rnatish - bu tizimni kerakli tilda matn va xabarlarni ko'rsatish uchun mahalliylashtirish jarayoni.
+
+Yangi tilni o'rnatish uchun paket menejeri yordamida tilni qo'llab-quvvatlash paketlarini o'rnatishingiz kerak. Masalan, Arch Linux-da siz kerakli tilni qo'llab-quvvatlash paketlarini o'rnatish uchun pacman paket menejeridan foydalanishingiz mumkin. Masalan, ingliz tilini qo'llab-quvvatlashni o'rnatish uchun siz quyidagi buyruqni bajarishingiz mumkin:
 
 ```bash
-localectl set-locale LANG=en_US.UTF-8
+sudo pacman -S glibc-locales
 ```
+Va nihoyat, `/etc/locale.conf` faylida LANG muhit o'zgaruvchisini o'rnatish orqali tizim tilini o'rnatishingiz mumkin. Buning uchun `nano` matn muraharriri orqali `/etc/locale.conf` faylidan kerakli tilini tanlab izohdan(`#`) chiqarishingiz kerak.
+
+```bash
+nano /etc/locale.conf
+```
+
+Tanlangan tilni `#` izohdan chiqarganizdan keyin nano matn muhariridan tharirlangan kodni saqlash uchun `ctrl+o` bosiladi va `enter` bosiladi keyin chiqish uchun esa `ctrl+x` bosib chiqib ketamiz. Keyin mahalliy tilni yaratish uchun quyidagi buyruqni bajarishingiz mumkin:
