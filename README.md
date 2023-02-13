@@ -269,3 +269,37 @@ nano /etc/locale.conf
 ```
 
 Tanlangan tilni `#` izohdan chiqarganizdan keyin nano matn muhariridan tharirlangan kodni saqlash uchun `ctrl+o` bosiladi va `enter` bosiladi keyin chiqish uchun esa `ctrl+x` bosib chiqib ketamiz. Keyin mahalliy tilni yaratish uchun quyidagi buyruqni bajarishingiz mumkin:
+
+```bash
+sudo locale-gen
+```
+#### Root parolini yaratish
+
+Root parolini va yangi foydalanuvchini yaratish Linux tizimini o'rnatish jarayonida muhim qadamdir. Root hisobi Linux tizimidagi eng yuqori darajadagi imtiyozlarga ega superuser hisobidir. Ushbu hisob tizimda har qanday amalni bajarishi mumkin, jumladan, dasturiy ta'minotni o'rnatish, fayllarni yaratish va o'zgartirish, tizim sozlamalarini sozlash.
+
+Biroq, xavfsizlik nuqtai nazaridan, kundalik vazifalar uchun root hisobidan foydalanish odatda tavsiya etilmaydi. Shuning uchun cheklangan imtiyozlarga ega yangi foydalanuvchi yaratish yaxshi fikrdir. Shunday qilib, siz root hisobiga o'tmasdan kundalik vazifalarni bajarishingiz mumkin, bu tizimda tasodifan biror narsani buzish xavfini kamaytiradi.
+
+Arch Linux-da root parolini yaratish uchun passwd buyrug'idan foydalanishingiz kerak. Bu root foydalanuvchi uchun yangi parolni kiritishingizni so'raydi.
+
+```bash
+passwd
+```
+
+#### Yangi foydalanuvchi yaratish:
+
+Arch Linux-da yangi foydalanuvchi yaratish uchun siz `useradd` va `passwd` buyruqlaridan foydalanishingiz mumkin. useradd uchun sintaksisi: 
+
+Misol uchun, asilbek ismli foydalanuvchi yaratish uchun siz quyidagilarni bajarasiz:
+
+```bash
+useradd -m -G wheel asilbek
+```
+
+Keyin passwd buyrug'i yordamida yangi foydalanuvchi uchun parol o'rnating:
+
+```bash
+passwd asilbek
+```
+
+
+
