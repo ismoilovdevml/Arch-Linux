@@ -300,6 +300,21 @@ Keyin passwd buyrug'i yordamida yangi foydalanuvchi uchun parol o'rnating:
 ```bash
 passwd asilbek
 ```
+`useradd` buyrug'idagi `-m` opsiyasi yangi foydalanuvchi uchun home directorysini yaratadi va `-G wheel` opsiyasi foydalanuvchini wheel guruhiga qo'shadi, bu esa foydalanuvchiga ma'muriy vazifalarni bajarish imkoniyatini beradi. `passwd` buyrug'i yangi foydalanuvchi uchun parolni o'rnatadi.
 
+
+## VIII Bootloader o'rnatish
+
+Bootloader - bu operatsion tizimni xotiraga yuklaydigan va boshqaruvni unga topshiradigan dastur. Bu kompyuter ishga tushganda ishlaydigan birinchi dasturiy ta'minot bo'lib, u operatsion tizimni ishga tushirish va boshqaruvni unga o'tkazish uchun javobgardir.
+
+Arch Linux uchun mashhur bootloader dasturlari orasida GRUB (GRand Unified Bootloader) va Syslinux mavjud. GRUB ko'pgina Linux distributivlari uchun standart bootloader bo'lib, yuklanadigan operatsion tizimni tanlash uchun menyuga asoslangan interfeysni taqdim etadi. Syslinux bu yengil bootloader moslamasi bo'lib, u odatda USB drayvlar kabi olinadigan muhitdan Linux distributivlarini yuklash uchun ishlatiladi.
+
+Arch Linux-da bootloader moslamasini o'rnatish va sozlash uchun quyidagi amallarni bajarish kerak:
+
+Pacman paket menejeri yordamida quyidagi buyruq bilan bootloaderni o'rnating:
+
+```bash
+pacman -S grub efibootmgr dosfstools mtools os-prober intel-ucode
+```
 
 
