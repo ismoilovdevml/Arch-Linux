@@ -351,3 +351,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 `grub-mkconfig` buyrug'i GRUB bootloader konfiguratsiya faylini yaratadi. Ushbu fayl tizimning yuklash parametrlarini, jumladan, yuklash uchun mavjud bo'lgan operatsion tizimlarni, yuklash uchun standart operatsion tizimni va standart boot timeout kabi boshqa variantlarni belgilaydi.
 
 `-o` opsiyasi chiqish(output) faylini belgilaydi, bu holda u `/boot/grub/grub.cfg`. Bu fayl `/etc/default/grub` va `/etc/grub.d` directorydagi boshqa konfiguratsiya fayllaridagi sozlamalar asosida yaratilgan.
+
+#### Bootloaderni yangilash
+
+```bash
+bootctl update
+```
+Ushbu qadamlar Arch Linux tizimingizda GRUB bootloaderni o'rnatadi va sozlaydi. Bootloaderni /boot/EFI directorysiga o'rnatiladi va /boot/grub/grub.cfg konfiguratsiya faylidan foydalanadi. bootctl update buyrug'i bootloaderning yangilanganligini va to'g'ri ishlashini ta'minlaydi.
