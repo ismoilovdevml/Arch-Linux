@@ -181,7 +181,7 @@ Buyrug'i EFI System bo'limini yangi yaratilgan directoryga mountlash uchun ishla
 Linux Swap bo'limini mountlash uchun quyidagi buyruqdan foydalaniladi:
 
 ```bash
-mount /dev/sda2 /mnt
+swapon /dev/sda2
 ```
 Linux Swap bo'limi operatsion tizim tomonidan virtual xotira sifatida ishlatiladi. Tizimda jismoniy xotira (RAM) tugagach, u swap boʻlimidan vaqtincha operativ xotirada saqlanadigan maʼlumotlarni vaqtincha saqlash uchun foydalanishi mumkin.
 
@@ -196,6 +196,15 @@ buyrug'i operatsion tizimning asosiy bo'limi bo'lgan ildiz qismini mountlash uch
 ## VI. Asosiy tizimni o'rnatish
 
 Arch Linux-dagi asosiy tizim funksional operatsion tizimga ega bo'lish uchun zarur bo'lgan minimal komponentlar to'plamini anglatadi. Bunga Linux kerneli, tizim kutubxonalari, asosiy utilitalar va tollari va boot loader kiradi.
+
+Asosiy tizimni o'rnatishda muammolar chiqmasligi uchun archlinux-keyring dasturini o'rnatib olamiz.
+
+```bash
+sudo pacman -S archlinux-keyring
+```
+`sudo pacman -S archlinux-keyring` - bu tizimingizga Arch Linux kalitlari paketini o'rnatuvchi buyruq.
+
+Arch Linux kalitlari toʻplami Arch Linux repositoriyalaridan oʻrnatilgan paketlarning yaxlitligi va haqiqiyligini tekshirish uchun foydalaniladigan ochiq kalitlar toʻplamidir. Kalitlar paketlar tranzit paytida hech qanday tarzda buzilmagan yoki o'zgartirilmaganligini ta'minlash uchun ishlatiladi.
 
 Asosiy tizimni o'rnatish uchun `pacstrap` buyrug'i ishga tushiriladi. Ushbu buyruq Arch Linux orepositoriyalaridan kerakli paketlar va komponentlarni yuklab oladi va o'rnatadi. U quyidagi tarzda amalga oshiriladi:
 
@@ -224,7 +233,16 @@ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 Ushbu buyruq fayl tizimi jadvalini yaratadi va uni yangi o'rnatilgan operatsion tizim uchun fayl tizimi jadvali bo'lgan `/mnt/etc/fstab  `fayliga qo'shadi. fstab faylining to'g'ri ekanligiga ishonch hosil qilish muhim, chunki noto'g'ri fstab fayli operatsion tizimning to'g'ri yuklanishiga xalaqit berishi mumkin.
 
-VII. Tizimni sozlash
+Nihoyat, arch-chroot buyrug'ini ishga tushirish orqali ildiz jildiini yangi o'rnatilgan tizimingizga o'zgartiring:
+
+```bash
+arch-chroot /mnt
+```
+`arch-chroot /mnt` - bu joriy tizimingizning ildiz jildini /mnt da o'rnatilgan yangi o'rnatilgan Arch Linux tizimingizning ildiz jildiga o'zgartirish imkonini beruvchi buyruq.
+
+Qisqa qilib aytganda, arch-chroot /mnt Arch Linux-ni o'rnatishda muhim buyruqdir, chunki u tizimingizni yangi o'rnatilgan muhitdan sozlashni davom ettirish imkonini beradi.
+
+## VII. Tizimni sozlash
 
 Asosiy tizim o'rnatilgandan so'ng, tizimni sozlash vaqti keldi. Ushbu bo'limda siz vaqt mintaqasini, klaviatura tartibini, root parolini o'rnatish va yangi foydalanuvchi hisobini yaratishni o'rganasiz.
 
@@ -279,6 +297,16 @@ Root parolini va yangi foydalanuvchini yaratish Linux tizimini o'rnatish jarayon
 
 Biroq, xavfsizlik nuqtai nazaridan, kundalik vazifalar uchun root hisobidan foydalanish odatda tavsiya etilmaydi. Shuning uchun cheklangan imtiyozlarga ega yangi foydalanuvchi yaratish yaxshi fikrdir. Shunday qilib, siz root hisobiga o'tmasdan kundalik vazifalarni bajarishingiz mumkin, bu tizimda tasodifan biror narsani buzish xavfini kamaytiradi.
 
+Arch linux uchun hostnomini kiritamiz
+
+```bash
+echo "kompyuternomi" > /etc/hostname
+```
+
+`echo "kompyuternomi" > /etc/hostname` - Arch Linux operatsion tizimida kompyuteringizning xost nomini o'rnatuvchi buyruq. kompyuternomi degani bu shunchaki misol siz xoxlagan nom berishingiz mumkin masalan linux dasturchi yoki komyuter brendlari nomi.
+
+/etc/hostname fayli tizimingizning xost nomini saqlaydigan konfiguratsiya faylidir. Echo buyrug'ini ishga tushirish va chiqishni ushbu faylga yo'naltirish orqali siz tizimingizning xost nomini "kompyuternomi" ga o'rnatasiz.
+
 Arch Linux-da root parolini yaratish uchun passwd buyrug'idan foydalanishingiz kerak. Bu root foydalanuvchi uchun yangi parolni kiritishingizni so'raydi.
 
 ```bash
@@ -301,6 +329,29 @@ Keyin passwd buyrug'i yordamida yangi foydalanuvchi uchun parol o'rnating:
 passwd asilbek
 ```
 `useradd` buyrug'idagi `-m` opsiyasi yangi foydalanuvchi uchun home directorysini yaratadi va `-G wheel` opsiyasi foydalanuvchini wheel guruhiga qo'shadi, bu esa foydalanuvchiga ma'muriy vazifalarni bajarish imkoniyatini beradi. `passwd` buyrug'i yangi foydalanuvchi uchun parolni o'rnatadi.
+
+
+#### Sudoers fayli konfiguratsiya faylini sozlash
+
+```bash
+EDITOR=nano visudo
+```
+ushbu buyruqni ishga tushirganizdan keyin sizda nano matn muharririda sudoers konfigratsiya fayli kodlari ochiladi.
+Siz ushbu kodlardan quyidagi kod satrlarini topib olasiz.
+
+```shell
+root ALL=(ALL) ALL
+##Uncomment to allow members of group wheel to execute any command
+#%whell ALL=(ALL) ALL
+```
+
+shu kod satrni quyidagi kodga o'zgartirasiz ya'ni `#%whell ALL=(ALL) ALL` ni izohdan chiqarasiz
+
+```shell
+root ALL=(ALL) ALL
+##Uncomment to allow members of group wheel to execute any command
+%whell ALL=(ALL) ALL
+```
 
 
 ## VIII Bootloader o'rnatish
