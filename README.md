@@ -462,3 +462,55 @@ pacman -S neofetch python firefox unzip xarchiver git htop net-tools e2fsprogs x
 * `iproute2` Tarmoq interfeyslarini, marshrutlash jadvallarini va trafikni boshqarishni boshqarish uchun foydalaniladigan yordamchi dasturlar to'plami.
 
 Ushbu buyruq ushbu paketlarni Arch Linux tizimiga o'rnatadi.
+
+### Asosiy Arch Linux tizimi uchun SSH va NetworkManager xizmatlarini yoqish
+
+```bash
+sudo systemctl enable sshd.service && systemctl enable NetworkManager
+```
+
+* `sudo systemctl enable sshd.service`
+
+Tizimda sshd xizmatini yoqadi. sshd - Secure Shell (SSH) protokoli uchun dastur bo'lib, u tarmoq orqali tizimga xavfsiz masofadan kirish imkonini beradi. Sshd xizmatini yoqish orqali siz foydalanuvchilarga SSH mijozi yordamida masofadan turib tizimga ulanishga ruxsat berasiz.
+
+* `systemctl enable NetworkManager`
+
+Tizimda NetworkManager xizmatini yoqadi. NetworkManager Linux tizimlarida, jumladan Ethernet, Wi-Fi va uyali tarmoqlarda tarmoq ulanishlarini boshqaradigan xizmatdir. NetworkManager-ni yoqish orqali siz tizimga tarmoq ulanishlarini avtomatik boshqarish va sozlash imkonini berasiz.
+
+Bu ikkita buyruq birgalikda tizimda SSH-ga kirish va tarmoqni boshqarish imkonini beradi, bu esa tizimga masofadan ulanish va boshqarishni osonlashtiradi. Ushbu xizmatlarni yoqish yoki yoqmaslik tizimning o'ziga xos foydalanish holati va ehtiyojlariga bog'liq. Biroq, ko'pchilik foydalanuvchilar uchun ushbu xizmatlarni yoqish odatiy va tavsiya etilgan amaliyotdir.
+
+
+### chroot muhitidan chiqish
+
+```bash
+exit
+exit
+```
+
+Oddiy Arch Linux o'rnatilishi kontekstida siz asosiy tizimni o'rnatish va sozlashdan so'ng chroot muhitidan chiqish uchun `exit` buyrug'idan foydalanasiz. Bu zarur, chunki chroot muhiti o'rnatish jarayonida foydalaniladigan vaqtinchalik ildiz fayl tizimi bo'lib, u tizimning doimiy qismi bo'lish uchun mo'ljallanmagan.
+
+Chroot muhitidan chiqish va jonli tizimga qaytish o'rnatish jarayonini yakunlashda muhim qadamdir, chunki u har qanday o'rnatilgan bo'limlarni o'chirish va yangi Arch Linux o'rnatilishidan foydalanishni boshlash uchun tizimni qayta ishga tushirish imkonini beradi.
+
+Shuning uchun, chiqish buyrug'i o'rnatish jarayonini yakunlash uchun zarur va o'rnatish jarayonida tegishli vaqtda ishlatilishi kerak.
+
+```bash
+umount -a
+```
+`umount -a` buyrug'i tizimdagi barcha o'rnatilgan fayl tizimlarini o'chirish uchun ishlatiladi. `-a` opsiyasi tizimning ishlashi uchun muhim deb belgilanganlaridan tashqari barcha fayl tizimlarini o'chirib qo'yish kerakligini bildiradi.
+
+Oddiy Arch Linux o'rnatilishi kontekstida siz chroot muhitidan chiqqaningizdan so'ng va tizimni qayta ishga tushirishdan oldin `umount -a` buyrug'idan foydalanasiz. Bu barcha o'rnatilgan fayl tizimlari to'g'ri o'chirilganligini va ma'lumotlarning buzilishi yoki boshqa muammolarga olib kelishi mumkin bo'lgan uzluksiz fayl tizimi operatsiyalari yo'qligini ta'minlash uchun zarur.
+
+Barcha fayl tizimlarini o'chirish orqali umount -a buyrug'i o'rnatish jarayonida kiritilgan har qanday o'zgarishlar diskda to'g'ri saqlanishini va tizimni qayta ishga tushirishdan oldin toza holatda bo'lishini ta'minlaydi.
+
+Shuning uchun umount -a buyrug'i Arch Linuxni o'rnatish jarayonining muhim qismidir va o'rnatish jarayonida tegishli vaqtda ishlatilishi kerak.
+
+### Tizimni qayta ishga tushirish
+
+```bash
+sudo reboot
+```
+Arch Linuxni o'rnatish jarayonida diskni qismlarga ajratish, asosiy tizimni o'rnatish yoki boot loaderni sozlash kabi muayyan vazifalarni bajarganingizdan so'ng tizimni qayta ishga tushirishingiz kerak bo'ladi. O'rnatish muvaffaqiyatli yakunlanishi uchun o'rnatish yo'riqnomasini diqqat bilan kuzatib borish va tizimni tegishli vaqtlarda qayta ishga tushirish muhimdir.
+
+`sudo reboot`-dan foydalanib, tizim barcha ishlaydigan jarayonlar va xizmatlarni ehtiyotkorlik bilan o'chiradi, o'rnatilgan fayl tizimlarini o'chiradi va tizimni qayta ishga tushiradi. Bu tizimning toza holatda bo'lishini va o'rnatish jarayonida kiritilgan har qanday o'zgarishlarning to'g'ri qo'llanilishini ta'minlaydi.
+
+Shunday qilib, ha, tizimni to'g'ri qayta ishga tushirish va o'rnatish jarayonida kiritilgan har qanday o'zgarishlar to'g'ri qo'llanilishini ta'minlash uchun Arch Linuxni o'rnatish jarayonida sudo reboot buyrug'idan foydalanish zarur.
