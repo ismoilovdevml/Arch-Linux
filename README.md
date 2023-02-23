@@ -353,6 +353,15 @@ root ALL=(ALL) ALL
 %whell ALL=(ALL) ALL
 ```
 
+`EDITOR=nano visudo` - bu nano matn muharriri yordamida tahrirlash uchun sudoers faylini ochadigan buyruq.
+
+`%wheel ALL=(ALL) ALL` - bu  wheel groupi a'zolariga sudo imtiyozlarini berish uchun sudoers fayliga qo'shilishi mumkin bo'lgan qator. wheel groupi Linuxda ko'pincha ma'lum foydalanuvchilarga ma'muriy imtiyozlar berish uchun ishlatiladigan maxsus guruhdir.
+
+Sudoers fayli konfiguratsiya fayli bo'lib, u qaysi foydalanuvchilarga sudo bilan imtiyozli buyruqlarni bajarishga ruxsat berilganligini va ularga qanday buyruqlarni bajarishga ruxsat berilganligini aniqlaydi. Odatiy bo'lib, sudoers fayli faqat ildiz foydalanuvchi tomonidan tahrirlanishi mumkin.
+
+`visudo` buyrug'i sudoers faylini tahrirlash uchun ishlatiladi. Bu buyruq bir vaqtning o'zida faqat bitta foydalanuvchi faylni tahrirlashini ta'minlaydi va faylni saqlashdan oldin uning sintaksisini xatolarga tekshiradi. Bu xatolarning oldini olishga yordam beradi va faylning haqiqiy va funktsional bo'lishini ta'minlaydi.
+
+Sudoers fayliga `%wheel ALL=(ALL) ALL` ni qo'shish wheel groupi a'zolariga sudo imtiyozlarini beradi. Bu ikkala harakat ham yuqori imtiyozlarni talab qiluvchi tizim boshqaruvi vazifalari uchun zarur, lekin tizimdagi har bir foydalanuvchi uchun juda xavflidir.
 
 ## VIII Bootloader o'rnatish
 
@@ -384,6 +393,16 @@ Ushbu buyruq Arch Linux tizimida bootloader moslamasi bilan bog'liq bir nechta p
 
 `pacman` buyrug'i paketlarni Arch Linux tizimiga o'rnatish uchun ishlatiladi. `-S` opsiyasi paketlarni o'rnatish kerakligini va undan keyin ko'rsatilgan paket nomlari o'rnatilishi kerak bo'lgan paketlarni belgilaydi.
 
+
+#### Linux kerneli uchun dastlabki ramdisk tasvirini qayta tiklash.
+
+```bash
+mkinitcpio -p linux
+```
+
+`mkinitcpio -p linux` - bu Linux kerneli uchun dastlabki ramdisk tasvirini qayta tiklash uchun ishlatiladigan buyruq. Dastlabki ramdisk tasviri vaqtinchalik fayl tizimi bo'lib, u haqiqiy ildiz fayl tizimi o'rnatilishidan oldin yuklash jarayonida xotiraga yuklanadi. Unda tizimni yuklash uchun zarur bo'lgan asosiy drayverlar va boshqa komponentlar mavjud.
+
+mkinitcpio -p linux tizimga ma'lum o'zgarishlar kiritilganda Linux kerneli uchun dastlabki ramdisk tasvirini qayta tiklash uchun zarur. Bu tizimni muvaffaqiyatli yuklash uchun kerakli drayverlar va komponentlar mavjudligini ta'minlaydi.
 
 #### Bootloaderni konfigratsiya qilish
 
