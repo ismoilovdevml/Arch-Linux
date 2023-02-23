@@ -407,7 +407,7 @@ mkinitcpio -p linux tizimga ma'lum o'zgarishlar kiritilganda Linux kerneli uchun
 #### Bootloaderni konfigratsiya qilish
 
 ```bash
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB --recheck
 ```
 `grub-install` buyrug'i GRUB bootloader moslamasini o'rnatish uchun ishlatiladi. `--target=x86_64-efi` opsiyasi maqsadli arxitektura `x86_64` ekanligini va bootloader moslamasi UEFI rejimida o'rnatilishi kerakligini bildiradi. `--efi-directory=/boot/EFI` opsiyasi EFI yuklash fayllari saqlanishi kerak bo'lgan directoryni belgilaydi, bu holda, `/boot/EFI`. `--bootloader-id=GRUB` opsiyasi UEFI yuklash menejerida bootloader moslamasi uchun ishlatilishi kerak bo'lgan nomni belgilash uchun ishlatiladi.
 
@@ -428,3 +428,37 @@ grub-mkconfig -o /boot/grub/grub.cfg
 bootctl update
 ```
 Ushbu qadamlar Arch Linux tizimingizda GRUB bootloaderni o'rnatadi va sozlaydi. Bootloaderni /boot/EFI directorysiga o'rnatiladi va /boot/grub/grub.cfg konfiguratsiya faylidan foydalanadi. bootctl update buyrug'i bootloaderning yangilanganligini va to'g'ri ishlashini ta'minlaydi.
+
+### Kerakli dasturlar va Sozlamalar
+
+Arch linux uchun kerakli dastur, driver va utilitalarni o'rnatamiz.
+
+```bash
+pacman -S neofetch python firefox unzip xarchiver git htop net-tools e2fsprogs xfsprogs iproute2
+```
+
+`pacman -S` buyrug'i va undan keyin paketlar nomlari ro'yxati ushbu paketlarni Arch Linux-ga o'rnatish uchun ishlatiladi. Quyida sanab o'tilgan har bir paketning qisqacha tushuntirishlari keltirilgan:
+
+* `neofetch` Terminalda tizim ma'lumotlari va qurilma tafsilotlarini ko'rsatish uchun ishlatiladigan buyruq qatori yordam dasturi.
+
+* `python` skript yaratish, veb-ishlab chiqish, ma'lumotlarni tahlil qilish va boshqalar kabi turli maqsadlarda ishlatiladigan mashhur dasturlash tili.
+
+* `firefox` Mozilla tomonidan ishlab chiqilgan mashhur open-source veb-brauzer.
+
+* `unzip` ZIP arxividan fayllarni chiqarish uchun ishlatiladigan buyruq qatori yordam dasturi.
+
+* `xarchiver` ZIP, RAR va TAR kabi turli xil arxiv formatlarini qo'llab-quvvatlaydigan grafik arxiv menejeri.
+
+* `git` Manba kodini boshqarish va dasturiy ta'minot loyihalarida hamkorlik qilish uchun ishlatiladigan mashhur versiya boshqaruv tizimi.
+
+* `htop` CPU va xotiradan foydalanish kabi tizim resurslarini kuzatish uchun foydalaniladigan buyruq qatori yordam dasturi.
+
+* `net-tools` Tarmoq interfeyslarini, jumladan ifconfig, arp va netstatni boshqarish uchun ishlatiladigan buyruq qatori yordam dasturlari to'plami.
+
+* `e2fsprogs` ext2, ext3 va ext4 fayl tizimlarini boshqarish uchun foydalaniladigan yordamchi dasturlar to'plami.
+
+* `xfsprogs` XFS fayl tizimini boshqarish uchun foydalaniladigan yordamchi dasturlar to'plami.
+
+* `iproute2` Tarmoq interfeyslarini, marshrutlash jadvallarini va trafikni boshqarishni boshqarish uchun foydalaniladigan yordamchi dasturlar to'plami.
+
+Ushbu buyruq ushbu paketlarni Arch Linux tizimiga o'rnatadi.
