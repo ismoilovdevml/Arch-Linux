@@ -626,7 +626,7 @@ Agar sizga xfce4ni o'zini standart dizayni ko'rishini yoqmasa uni didingizga qar
 
 Agar siz boshqa DE larni o'rnatmoqchi bo'lsagiz quyidagi havola orqai o'zongizga yoqqan De larni o'rnatib olishingiz mumkin
 
-### [Boshqa DE larni o'rnatish qo'llanmasi(o'zbek tilida)](https://t.me/xinuxuz/207118/207352)
+### [Boshqa DE larni o'rnatish qo'llanmasi(o'zbek tilida)](https://t.me/Otabek_Ismoilov/424)
 
 ## Xulosa
 
