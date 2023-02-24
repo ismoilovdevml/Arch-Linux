@@ -109,6 +109,15 @@ $ lsblk
 ```
 $ lsblk bilan bo'limlarni ko'razmiz bizda `/dev/sda` ichida `/dev/sda1`,`/dev/sda2`va `/dev/sda3` bo'lishi kerak.
 
+```bash
+NAME    MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
+sda       8:0    1 476.9G  0 disk
+├─sda1    8:1    1   512M  0 part /mnt/boot/EFI
+├─sda2    8:2    1     4G  0 part [SWAP]
+└─sda3    8:3    1 459.9G  0 part /mnt
+sr0      11:0    1 779.3M  0 rom /run/archiso/bootmnt
+```
+
 #### /dev/sda1
 
 Bu tizimdagi birinchi xotira qurilmasidagi bo'lim (sda bilan ifodalanadi) va u odatda EFI tizim bo'limi sifatida ishlatiladi. EFI tizim bo'limi - bu tizimni yuklash uchun zarur bo'lgan boot loader va tizim yordam dasturlarini o'z ichiga olgan bo'lim. Ushbu bo'lim odatda `FAT32` fayl tizimi sifatida formatlanadi va odatda xotira qurilmasining boshida joylashgan.
@@ -464,6 +473,31 @@ pacman -S neofetch python firefox unzip xarchiver git htop net-tools e2fsprogs x
 * `iproute2` Tarmoq interfeyslarini, marshrutlash jadvallarini va trafikni boshqarishni boshqarish uchun foydalaniladigan yordamchi dasturlar to'plami.
 
 Ushbu buyruq ushbu paketlarni Arch Linux tizimiga o'rnatadi.
+
+
+
+### Grafik drayverlar o'rnatish
+
+Grafik drayverlarni o'rnatish juda muhim, chunki ular tizimingizdagi grafik hardwarening operatsion tizim va dasturiy ta'minot bilan samarali aloqa qilishiga imkon beradi. Tegishli grafik drayverlar o'rnatilmagan bo'lsa, tizimingizning grafik ishlashi buzilgan bo'lishi mumkin, natijada kadrlar tezligi past bo'ladi, grafik artefaktlar va boshqa vizual muammolar paydo bo'ladi. Bundan tashqari, ba'zi dasturiy ta'minotlar tegishli grafik drayverlarsiz to'g'ri yoki umuman ishlamasligi mumkin. Shuning uchun kerakli grafik drayverlarni o'rnatish tizimingizning optimal ishlashi va funksionalligiga erishish uchun juda muhimdir.
+
+Sizda qaysi grafik drayver bo'lsa shuni tanlab o'rnatib olishingiz kerak.
+
+#### intel uchun
+```bash
+pacman -S xf86-video-intel
+```
+#### AMD uchun
+```bash
+pacman -S xf86-video-amdgpu 
+```
+#### Nvidia uchun
+```bash
+pacman -S nvidia nvidia-utils
+```
+#### Virtualbox uchun
+```bash
+pacman -S virtualbox-gues-utils
+```
 
 ### Asosiy Arch Linux tizimi uchun SSH va NetworkManager xizmatlarini yoqish
 
