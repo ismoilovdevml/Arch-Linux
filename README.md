@@ -1,4 +1,6 @@
-# Arch Linux-ni o'rnatish bo'yicha bosqichma-bosqich qo'llanma
+<h1 align="center">Arch Linux-ni o'rnatish bo'yicha bosqichma-bosqich qo'llanma</h1>
+
+<p align="center"><a href="https://xinux.uz" target="_blank"><img src="https://github.com/ismoilovdevml/Arch-Linux/blob/master/assets/banner.png"/></a></p>
 
 ## I. Kirish
 
