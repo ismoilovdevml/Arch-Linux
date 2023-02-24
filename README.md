@@ -587,6 +587,12 @@ Bundan tashqari, u grafik foydalanuvchi interfeyslari uchun asos bo'lgan dasturi
 
 Kodning ikkinchi qatori LightDM displey menejerini boshqarish uchun masul bo'lgan tizim xizmati bo'lgan `lightdm.service`-ni ishga tushiradi. Bu LightDM displey menejerining yuklash vaqtida avtomatik ravishda ishga tushishini ta'minlaydi va foydalanuvchiga grafik interfeys orqali tizimga kirish imkonini beradi.
 
+Agar sizga xfce4ni o'zini standart dizayni ko'rishini yoqmasa uni didingizga qarab xoxlagancha bezab olishingiz mumkin. Quyida havolada Arch linuxga o'rnatilgan xfce4ni dizayni o'zgartirish qo'llanmasi va konfiguratsiya fayllar, kodlari bor.
+
+![alt text](https://github.com/ismoilovdevml/Arch-Linux/blob/master/assets/xfce4.png)
+
+### [Xfce4 Ko'rinishi o'zgartirish](https://github.com/ismoilovdevml/de-config/tree/master/xfce4-macos-config)
+
 ## Xulosa
 
 Xulosa qilib aytganda, biz foydalanuvchilarga yengil va soddalashtirilgan hisoblash muhitini taqdim etuvchi kuchli va sozlanishi mumkin bo'lgan Arch Linux operatsion tizimini o'rnatishni yakunladik. O'rnatish jarayonida biz diskni qismlarga ajratdik, asosiy tizimni o'rnatdik, boot loaderni sozladik, qo'shimcha dasturiy ta'minotni o'rnatdik va tarmoq va foydalanuvchi hisoblari kabi asosiy tizim konfiguratsiyalarini o'rnatdik.
@@ -594,3 +600,19 @@ Xulosa qilib aytganda, biz foydalanuvchilarga yengil va soddalashtirilgan hisobl
 Tizimni qayta ishga tushirgandan so'ng, bizga Arch Linux buyruq qatori interfeysi taqdim etildi, u bizning ehtiyojlarimizga moslashtirilgan va moslashtirilgan. Bu yerdan foydalanuvchilar qo‘shimcha dasturlarni o‘rnatishlari, tizim sozlamalarini sozlashlari va Arch Linux muhitini o‘z xohishlariga ko‘ra nozik sozlashlari mumkin. Keyin biz Desktop Environment o'rnattik.
 
 O'rnatish jarayoni boshqa Linux distributivlariga qaraganda ancha murakkab bo'lishi mumkin bo'lsa-da, Arch Linux-ning afzalliklari uning moslashuvchanligi, minimalizmi va sozlanishidadir. Bu ularning o'ziga xos ehtiyojlariga moslashtirilishi mumkin bo'lgan yengil va samarali operatsion tizimni xohlaydigan foydalanuvchilar uchun ideal tanlovdir.
+
+
+#### Muallif: Otabek Ismoilov
+* [Veb-sayt](https://ismoilovdev.vercel.app/)
+* [Telegram Blog](https://t.me/Otabek_Ismoilov)
+* [Github](https://github.com/ismoilovdevml)
+
+#### Hamjamiya: Xinux
+* [Veb-sayt](https://www.xinux.uz/)
+* [Telegram](https://t.me/xinuxuz)
+
+#### Hamjamiya: Uzinfocom Open Source
+
+* [Veb-sayt](https://oss.uzinfocom.uz)
+* [Telegram](https://t.me/uzinfocom_oss)
+* [Github](https://github.com/uzinfocom-org)
