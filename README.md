@@ -4,7 +4,7 @@
 
 ## I. Kirish
 
-Arch Linux nima ekanligini qisqacha tushuntirish: Arch Linux Linux yadrosiga asoslangan bepul va Open Source operatsion tizimdir. Bu doimiy ravishda yangilanadigan distributivdir, ya'ni u doimiy ravishda yangilanadi va foydalanuvchilar eng so'nggi dasturiy ta'minot yangilanishlari va xavfsizlik tuzatishlarini oladi. Arch Linux o'zining soddaligi, moslashuvchanligi va minimalizmi bilan mashhur va o'z tizimini to'liq nazorat qilishni xohlaydigan tajribali Linux foydalanuvchilariga mo'ljallangan.
+Arch Linux Linux kerneliga asoslangan bepul va Open Source operatsion tizimdir. Bu doimiy ravishda yangilanadigan distributivdir, ya'ni u doimiy ravishda yangilanadi va foydalanuvchilar eng so'nggi dasturiy ta'minot yangilanishlari va xavfsizlik tuzatishlarini oladi. Arch Linux o'zining soddaligi, moslashuvchanligi va minimalizmi bilan mashhur va o'z tizimini to'liq nazorat qilishni xohlaydigan tajribali Linux foydalanuvchilariga mo'ljallangan.
 
 Qo'llanmaning maqsadi: Ushbu qo'llanmaning maqsadi Arch Linuxni o'rnatish bo'yicha to'liq va bosqichma-bosqich qo'llanmani taqdim etishdir. Ushbu qo'llanma Arch Linux-ga yangi kelgan va uni sinab ko'rmoqchi bo'lgan yangi boshlanuvchilarga, shuningdek Arch Linux-ni o'z tizimlariga o'rnatmoqchi bo'lgan tajribali Linux foydalanuvchilariga yordam berish uchun mo'ljallangan.
 
@@ -41,7 +41,7 @@ dd bs=4M if=/home/ismoilovdev/Documents/archlinux-x86_64.iso of=/dev/sdb conv=fs
 ```
 bu yerda siz ISO faylga yo'l berasiz masalan `/home/ismoilovdev/Document/archlinux-x86_64.iso`
 
-`of=/dev/sdb` bu yerda mening USB draverim formati sizda boshqacha bo'lishi mumkin buni bilish uchun terminalga root bilan kirib quyidagi buyruqni kiriting> USB drayver kompyuterga ulangan bo'lishi kerak.
+`of=/dev/sdb` bu yerda mening USB draverim formati sizda boshqacha bo'lishi mumkin buni bilish uchun terminalga root bilan kirib quyidagi buyruqni kiriting. USB drayver kompyuterga ulangan bo'lishi kerak.
 ```bash
 sudo su 
 fdisk -l
@@ -49,7 +49,7 @@ fdisk -l
 Chiqqan ma'lumotlardan eng pastida USB drayver haqida yozilgan bo'ladi turlari `/dev/sda, /dev/sdb, /dev/sdx` 
 
 #### USB orqali yuklash
-Yuklanadigan USB drayverini yaratganingizdan so'ng, kompyuteringizni USB bilan yuklashingiz kerak. Buni amalga oshirish uchun USB drayverini kompyuteringizga joylashtiring va uni qayta ishga tushiring. Kompyuteringizning BIOS yoki UEFI konfiguratsiyasiga qarab, yuklash menyusiga kirish va yuklash qurilmasi sifatida USB drayverini tanlash uchun tugmani (masalan, F12 yoki Esc) bosishingiz kerak bo'ladi.
+Yuklanadigan USB drayverini yaratganingizdan so'ng, kompyuteringizni USB bilan yuklashingiz kerak. Buni amalga oshirish uchun USB drayverini kompyuteringizga joylashtiring va uni qayta ishga tushiring. Kompyuteringizning BIOS yoki UEFI konfiguratsiyasiga qarab, BOOT menyusiga kirish va yuklash qurilmasi sifatida USB drayverini tanlash uchun tugmani (masalan, F12 yoki Esc) bosishingiz kerak bo'ladi.
 
 ![alt text](https://www.wimware.com/design/how-to/boot-from-cd-dvd/Boot-options-entry-key.png)
 
@@ -61,6 +61,25 @@ Boot menuga kiring va USB ni tanlab enter bosing
 
 Sozlaganingizga qarab, Arch Linux o'rnatilishini yakunlash uchun internetga ulanishingiz kerak bo'ladi. O'rnatish jarayonida yangilanishlar yoki paketlarni yuklab olishingiz kerak bo'lsa, bu ayniqsa muhimdir. Internetga ulanish uchun simli internet yoki simli internet bo'lmasa USB kabel bilan telefondan USB Modemni yoqish va yoki  Wi-Fi tarmog'iga ulashingiz mumkin.
 
+Tarmoqga ulanish
+
+```bash
+ip -c a  
+iwctl.                     
+device list                
+station wlan0 get-networks 
+station wlan0 connect SSID 
+```
+* `ip -c a` Bu buyruq barcha tarmoq interfeyslariga tayinlangan IP manzillarni qisqa va o'qish oson formatda ko'rsatadi. `-c` opsiyasi buyruqni ixcham formatda chiqarishni bildiradi.
+
+* `iwctl` Bu Linuxda simsiz tarmoq interfeyslarini sozlash va boshqarish uchun buyruq qatori vositasi. Bu sizga yaqin-atrofdagi simsiz tarmoqlarni skanerlash, tarmoqqa ulanish va simsiz rejimlarni boshqarish kabi turli operatsiyalarni bajarish imkonini beradi.
+
+* `device list` Bu buyruq `iwctl` bilan foydalanilganda tizimdagi barcha mavjud simsiz tarmoq qurilmalari roʻyxatini koʻrsatadi.
+
+* `station wlan0 get-networks ` Ushbu buyruq `iwctl` bilan foydalanilganda, `wlan0` simsiz tarmoq qurilmasi diapazonidagi barcha mavjud simsiz tarmoqlar ro'yxatini ko'rsatadi.
+
+* `station wlan0 connect SSID` Bu buyruq iwctl bilan foydalanilganda, wlan0 simsiz tarmoq qurilmasini SSID nomi bilan simsiz tarmoqqa ulaydi. SSID-ni ulanmoqchi bo'lgan simsiz tarmoqning haqiqiy nomi bilan almashtiring. Ulangandan so'ng, agar u xavfsiz tarmoq bo'lsa, tarmoq uchun xavfsizlik parolini kiritishingiz kerak bo'ladi.
+
 ## IV. Diskni qismlarga(partition) ajratish
 
 Bo'limlarga(partition) bo'lish tushuntirish: Bo'limga bo'lish - bu qattiq diskni bir nechta bo'limlarga bo'lish jarayoni bo'lib, ularning har biri har xil turdagi ma'lumotlarni saqlash yoki turli xil operatsion tizimlarni o'rnatish uchun ishlatilishi mumkin. Bo'limlarga ajratish Arch Linux-ni o'rnatish jarayonida muhim qadamdir, chunki u tizimning turli qismlariga ma'lum hajmdagi saqlash joyini ajratish imkonini beradi.
@@ -69,9 +88,9 @@ Bo'limlarga(partition) bo'lish tushuntirish: Bo'limga bo'lish - bu qattiq diskni
 
 Zamonaviy tizimlarda ikkita asosiy bo'lim sxemasi qo'llaniladi: MBR (Master Boot Record) va GPT (GUID Partition Table). MBR ikkitadan kattasi bo'lib, to'rtta asosiy yoki uchta asosiy bo'lim va kengaytirilgan qismni qo'llab-quvvatlaydi. Boshqa tomondan, GPT deyarli cheksiz miqdordagi bo'limlarni qo'llab-quvvatlaydi va UEFI-ga asoslangan tizimlar uchun talab qilinadi.
 
-#### Cfdisk yoki fdisk kabi tool yordamida bo'limlarni yaratish
+#### cfdisk yoki fdisk kabi tool yordamida bo'limlarni yaratish
 
-Qattiq diskingizda bo'limlarni yaratish uchun cfdisk yoki fdisk kabi tooldan foydalanishingiz mumkin. Ushbu tollar diskda bo'limlarni yaratish, o'chirish va o'zgartirish imkonini beradi. Bo'limlarni yaratishda kamida ikkita bo'lim yaratish tavsiya etiladi: biri ildiz(root) `/` fayl tizimi uchun, ikkinchisi esa swap uchun. Ildiz bo'limi kamida 20 GB bo'lishi kerak, swap bo'limi esa tizimingizdagi RAM miqdoriga teng yoki undan biroz kattaroq bo'lishi kerak. Cfdisk yoki fdisk dan foydalanganda ehtiyot bo'lish kerak, chunki noto'g'ri bo'limlar o'chirilsa yoki o'zgartirilsa, ma'lumotlaringizga doimiy ravishda zarar etkazishi mumkin.
+Qattiq diskingizda bo'limlarni yaratish uchun cfdisk yoki fdisk kabi tooldan foydalanishingiz mumkin. Ushbu tollar diskda bo'limlarni yaratish, o'chirish va o'zgartirish imkonini beradi. Bo'limlarni yaratishda kamida ikkita bo'lim yaratish tavsiya etiladi: biri ildiz(root) `/` fayl tizimi uchun, ikkinchisi esa swap uchun. Ildiz bo'limi kamida 20 GB bo'lishi kerak, swap bo'limi esa tizimingizdagi RAM miqdoriga teng yoki undan biroz kattaroq bo'lishi kerak. cfdisk yoki fdisk dan foydalanganda ehtiyot bo'lish kerak, chunki noto'g'ri bo'limlar o'chirilsa yoki o'zgartirilsa, ma'lumotlaringizga doimiy ravishda zarar etkazishi mumkin.
 
 ## V. Bo'limlarni formatlash
 
@@ -81,7 +100,7 @@ Formatlash - fayl tizimi tomonidan foydalanish uchun bo'limni tayyorlash jarayon
 
 #### Bo'limlarda fayl tizimini yaratish
 
-Arch Linuxda foydalanish mumkin bo'lgan bir nechta fayl tizimlari mavjud, jumladan ext4, btrfs va xfs. Ildiz bo'limi uchun eng ko'p ishlatiladigan fayl tizimi ext4, btrfs va xfs esa ilg'or foydalanuvchilar uchun mashhur tanlovdir. Bo'limda fayl tizimini yaratish uchun siz quyidagi buyruqdan foydalanishingiz mumkin:
+Arch Linuxda foydalanish mumkin bo'lgan bir nechta fayl tizimlari mavjud, jumladan ext4, btrfs va xfs. Ildiz bo'limi(root partition) uchun eng ko'p ishlatiladigan fayl tizimi ext4, btrfs va xfs esa ilg'or foydalanuvchilar uchun mashhur tanlovdir. Bo'limda fayl tizimini yaratish uchun siz quyidagi buyruqdan foydalanishingiz mumkin:
 
 `lsblk` buyru'gi yordamida bo'limlarni ko'ramiz
 ```bash
@@ -99,7 +118,7 @@ Bu yerdan chiqqan bo'limda GPT ni bosib o'tamiz yangi bo'lim ochamiz bunga `512M
 Linux swap bo'limi tizimni qo'shimcha virtual xotira bilan ta'minlash uchun ishlatiladi, bu sizning operativ xotirangiz cheklangan bo'lsa, ayniqsa muhimdir. Swap bo'limi tizimda jismoniy xotira tugashi bilan foydalaniladi va tizim ishga tushganda u avtomatik ravishda faollashadi.
 Swap bo'lim ochamiz Kompyuter RAM ga teng yoki yarmiga teng holda swap ochamiz. Masalan 4GB RAM 4GB swap yoki 2GB swap disklar bo'linayotganda `GB` o'rnga `G` yoziladi typega `Linux Swap` beramiz.
 
-Ext4 Linux fayl tizimining bo'limi operatsion tizimning ishlashi uchun zarur bo'lgan barcha fayllarni o'z ichiga olgan ildiz(root) directoryni saqlash uchun ishlatiladi. Ildiz bo'limi odatda tizimdagi eng katta bo'lim bo'lib, u erda ma'lumotlaringiz va fayllaringizning aksariyati saqlanadi.
+Ext4 Linux fayl tizimining bo'limi operatsion tizimning ishlashi uchun zarur bo'lgan barcha fayllarni o'z ichiga olgan ildiz(root) directoryni saqlash uchun ishlatiladi. Ildiz bo'limi odatda tizimdagi eng katta bo'lim bo'lib, u yerda ma'lumotlaringiz va fayllaringizning aksariyati saqlanadi.
 Linux fayl tizimi bo'limini bo'lishuchun `ext4` formatda xotira beramiz typega `Linux file system` qo'yamiz. O'zgarishlarni saqlash uchun `Write` bosib `yes` yozib `enter` bosamiz keyin `Quit` bosib chiqib ketamiz.
 
 Bo'limlarni tekshirib Ko'ramiz.
@@ -202,7 +221,19 @@ Linux Swap bo'limi operatsion tizim tomonidan virtual xotira sifatida ishlatilad
 mount /dev/sda3 /mnt
 ```
 
-buyrug'i operatsion tizimning asosiy bo'limi bo'lgan ildiz qismini mountlash uchun ishlatiladi. Ildiz bo'limi butun fayl tizimini, shu jumladan /home, /usr, /var va boshqalar kabi barcha boshqa directorylarni o'z ichiga oladi.
+mount /dev/sda3 /mnt buyrug'i operatsion tizimning asosiy bo'limi bo'lgan ildiz qismini mountlash uchun ishlatiladi. Ildiz bo'limi butun fayl tizimini, shu jumladan /home, /usr, /var va boshqalar kabi barcha boshqa directorylarni o'z ichiga oladi.
+
+Mounlash jarayoni tugaganidan keyin l`sblk` buyru'gi bilan teskhirib ko'rsangiz quyidek chiqishi kerak.
+```bash
+root@archiso ~ # lsblk
+NAME    MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
+sda       8:0    1 476.9G  0 disk
+├─sda1    8:1    1   512M  0 part /mnt/boot/EFI
+├─sda2    8:2    1     4G  0 part [SWAP]
+└─sda3    8:3    1 459.9G  0 part /mnt
+sr0      11:0    1 779.3M  0 rom /run/archiso/bootmnt
+```
+
 
 ## VI. Asosiy tizimni o'rnatish
 
@@ -217,16 +248,16 @@ sudo pacman -S archlinux-keyring
 
 Arch Linux kalitlari toʻplami Arch Linux repositoriyalaridan oʻrnatilgan paketlarning yaxlitligi va haqiqiyligini tekshirish uchun foydalaniladigan ochiq kalitlar toʻplamidir. Kalitlar paketlar tranzit paytida hech qanday tarzda buzilmagan yoki o'zgartirilmaganligini ta'minlash uchun ishlatiladi.
 
-Asosiy tizimni o'rnatish uchun `pacstrap` buyrug'i ishga tushiriladi. Ushbu buyruq Arch Linux orepositoriyalaridan kerakli paketlar va komponentlarni yuklab oladi va o'rnatadi. U quyidagi tarzda amalga oshiriladi:
+Asosiy tizimni o'rnatish uchun `pacstrap` buyrug'i ishga tushiriladi. Ushbu buyruq Arch Linux repositoriyalaridan kerakli paketlar va komponentlarni yuklab oladi va o'rnatadi. U quyidagi tarzda amalga oshiriladi:
 
 ```bash
  pacstrap /mnt base base-devel linux linux-firmware nano openssh networkmanager netctl
  ```
-Yuqoridagi satrdagi `pacstrap` buyrug'i `/mnt` da o'rnatilgan fayl tizimiga asosiy tizim va kerakli paketlarni o'rnatish uchun ishlatiladi. /mnt katalogi asosiy tizimni o'rnatish uchun maqsadli directory sifatida ishlatiladi.
+Yuqoridagi satrdagi `pacstrap` buyrug'i `/mnt` da o'rnatilgan fayl tizimiga asosiy tizim va kerakli paketlarni o'rnatish uchun ishlatiladi. /mnt directorysi asosiy tizimni o'rnatish uchun maqsadli directory sifatida ishlatiladi.
 
 /mnt dan keyin ko'rsatilgan paketlar asosiy tizimning tarkibiy qismlari bo'lib, ular quyidagilarni o'z ichiga oladi:
 
-* `base:` Funktsional tizim uchun zarur bo'lgan asosiy paketlar.
+* `base:` Funksional tizim uchun zarur bo'lgan asosiy paketlar.
 * `base-devel:` manbadan boshqa paketlarni yaratish uchun zarur bo'lgan ishlab chiqish paketlari.
 * `linux:` Linux kerneli.
 * `linux-firmware:` Linux kerneli uchun zarur bo'lgan mikrodastur(firmware) fayllari.
@@ -237,19 +268,19 @@ Yuqoridagi satrdagi `pacstrap` buyrug'i `/mnt` da o'rnatilgan fayl tizimiga asos
 Belgilangan paketlar Arch Linux paketi repositoriyalaridan yuklab olinadi va /mnt fayl tizimiga o'rnatiladi.
 
 
-Asosiy tizimni o'rnatish tugallangandan so'ng, fstab faylini yaratish kerak. fstab fayli yoki fayl tizimi jadvali operatsion tizim tomonidan yuklash vaqtida qaysi fayl tizimlarini o'rnatish kerakligini va ularni qayerga o'rnatish kerakligini aniqlash uchun ishlatiladi. fstab fayli quyidagi buyruq yordamida yaratilishi mumkin:
+Asosiy tizimni o'rnatish tugallangandan so'ng, `fstab` faylini yaratish kerak. fstab fayli yoki fayl tizimi jadvali operatsion tizim tomonidan yuklash vaqtida qaysi fayl tizimlarini o'rnatish kerakligini va ularni qayerga o'rnatish kerakligini aniqlash uchun ishlatiladi. fstab fayli quyidagi buyruq yordamida yaratililadi:
 
 ```bash
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 Ushbu buyruq fayl tizimi jadvalini yaratadi va uni yangi o'rnatilgan operatsion tizim uchun fayl tizimi jadvali bo'lgan `/mnt/etc/fstab  `fayliga qo'shadi. fstab faylining to'g'ri ekanligiga ishonch hosil qilish muhim, chunki noto'g'ri fstab fayli operatsion tizimning to'g'ri yuklanishiga xalaqit berishi mumkin.
 
-Nihoyat, arch-chroot buyrug'ini ishga tushirish orqali ildiz jildiini yangi o'rnatilgan tizimingizga o'zgartiring:
+Nihoyat, arch-chroot buyrug'ini ishga tushirish orqali root directorisini yangi o'rnatilgan tizimingizga o'zgartiring:
 
 ```bash
 arch-chroot /mnt
 ```
-`arch-chroot /mnt` - bu joriy tizimingizning ildiz jildini /mnt da o'rnatilgan yangi o'rnatilgan Arch Linux tizimingizning ildiz jildiga o'zgartirish imkonini beruvchi buyruq.
+`arch-chroot /mnt` - bu joriy tizimingizning root directorini /mnt da o'rnatilgan yangi o'rnatilgan Arch Linux tizimingizning root directoriga o'zgartirish imkonini beruvchi buyruq.
 
 Qisqa qilib aytganda, arch-chroot /mnt Arch Linux-ni o'rnatishda muhim buyruqdir, chunki u tizimingizni yangi o'rnatilgan muhitdan sozlashni davom ettirish imkonini beradi.
 
@@ -368,7 +399,7 @@ root ALL=(ALL) ALL
 
 `%wheel ALL=(ALL) ALL` - bu  wheel groupi a'zolariga sudo imtiyozlarini berish uchun sudoers fayliga qo'shilishi mumkin bo'lgan qator. wheel groupi Linuxda ko'pincha ma'lum foydalanuvchilarga ma'muriy imtiyozlar berish uchun ishlatiladigan maxsus guruhdir.
 
-Sudoers fayli konfiguratsiya fayli bo'lib, u qaysi foydalanuvchilarga sudo bilan imtiyozli buyruqlarni bajarishga ruxsat berilganligini va ularga qanday buyruqlarni bajarishga ruxsat berilganligini aniqlaydi. Odatiy bo'lib, sudoers fayli faqat ildiz foydalanuvchi tomonidan tahrirlanishi mumkin.
+Sudoers fayli konfiguratsiya fayli bo'lib, u qaysi foydalanuvchilarga sudo bilan imtiyozli buyruqlarni bajarishga ruxsat berilganligini va ularga qanday buyruqlarni bajarishga ruxsat berilganligini aniqlaydi. Odatiy bo'lib, sudoers fayli faqat root foydalanuvchi tomonidan tahrirlanishi mumkin.
 
 `visudo` buyrug'i sudoers faylini tahrirlash uchun ishlatiladi. Bu buyruq bir vaqtning o'zida faqat bitta foydalanuvchi faylni tahrirlashini ta'minlaydi va faylni saqlashdan oldin uning sintaksisini xatolarga tekshiradi. Bu xatolarning oldini olishga yordam beradi va faylning haqiqiy va funktsional bo'lishini ta'minlaydi.
 
@@ -380,7 +411,7 @@ Bootloader - bu operatsion tizimni xotiraga yuklaydigan va boshqaruvni unga tops
 
 Arch Linux uchun mashhur bootloader dasturlari orasida GRUB (GRand Unified Bootloader) va Syslinux mavjud. GRUB ko'pgina Linux distributivlari uchun standart bootloader bo'lib, yuklanadigan operatsion tizimni tanlash uchun menyuga asoslangan interfeysni taqdim etadi. Syslinux bu yengil bootloader moslamasi bo'lib, u odatda USB drayvlar kabi olinadigan muhitdan Linux distributivlarini yuklash uchun ishlatiladi.
 
-Arch Linux-da bootloader moslamasini o'rnatish va sozlash uchun quyidagi amallarni bajarish kerak:
+Arch Linux-da bootloaderni o'rnatish va sozlash uchun quyidagi amallarni bajarish kerak:
 
 Pacman paket menejeri yordamida quyidagi buyruq bilan bootloaderni o'rnating:
 
@@ -388,11 +419,11 @@ Pacman paket menejeri yordamida quyidagi buyruq bilan bootloaderni o'rnating:
 pacman -S grub efibootmgr dosfstools mtools os-prober intel-ucode
 ```
 
-Ushbu buyruq Arch Linux tizimida bootloader moslamasi bilan bog'liq bir nechta paketlarni o'rnatish uchun ishlatiladi. O'rnatilgan paketlar quyidagilar:
+Ushbu buyruq Arch Linux tizimida bootloader bilan bog'liq bir nechta paketlarni o'rnatish uchun ishlatiladi. O'rnatilgan paketlar quyidagilar:
 
 * `grub` (GRand Unified Bootloader): Bu o'rnatilgan operatsion tizimlar ro'yxatidan yuklash uchun operatsion tizimni tanlash imkonini beruvchi yuklovchi bootloader.
 
-* `efibootmgr` Bu UEFI (Unified Extensible Firmware Interface) asosidagi tizimlarda EFI(Unified Extensible Firmware Interface) tizim qismidagi yuklash yozuvlarini boshqarish uchun foydalaniladigan vositadir.
+* `efibootmgr` Bu UEFI (Unified Extensible Firmware Interface) asosidagi tizimlarda EFI tizim qismidagi yuklash yozuvlarini boshqarish uchun foydalaniladigan vositadir.
 
 * `dosfstools` Ushbu paket odatda UEFI tizimlarida yuklanadigan bo'limlar uchun ishlatiladigan MS-DOS FAT fayl tizimlarini yaratish va tekshirish uchun yordamchi dasturlarni taqdim etadi.
 
@@ -400,7 +431,7 @@ Ushbu buyruq Arch Linux tizimida bootloader moslamasi bilan bog'liq bir nechta p
 
 * `os-prober` Ushbu vosita boshqa operatsion tizimlar va bir xil mashinada o'rnatilgan bootloaderlarni aniqlash uchun ishlatiladi.
 
-* `ntel-ucode` yoki `amd-ucode` Ushbu paket tizim barqarorligi va xavfsizligini yaxshilashga yordam beradigan Intel protsessorlari va AMD protsessorlari uchun mikrokod yangilanishlarini o'z ichiga oladi.
+* `intel-ucode` yoki `amd-ucode` Ushbu paket tizim barqarorligi va xavfsizligini yaxshilashga yordam beradigan Intel protsessorlari va AMD protsessorlari uchun mikrokod yangilanishlarini o'z ichiga oladi.
 
 `pacman` buyrug'i paketlarni Arch Linux tizimiga o'rnatish uchun ishlatiladi. `-S` opsiyasi paketlarni o'rnatish kerakligini va undan keyin ko'rsatilgan paket nomlari o'rnatilishi kerak bo'lgan paketlarni belgilaydi.
 
@@ -413,14 +444,14 @@ mkinitcpio -p linux
 
 `mkinitcpio -p linux` - bu Linux kerneli uchun dastlabki ramdisk tasvirini qayta tiklash uchun ishlatiladigan buyruq. Dastlabki ramdisk tasviri vaqtinchalik fayl tizimi bo'lib, u haqiqiy ildiz fayl tizimi o'rnatilishidan oldin yuklash jarayonida xotiraga yuklanadi. Unda tizimni yuklash uchun zarur bo'lgan asosiy drayverlar va boshqa komponentlar mavjud.
 
-mkinitcpio -p linux tizimga ma'lum o'zgarishlar kiritilganda Linux kerneli uchun dastlabki ramdisk tasvirini qayta tiklash uchun zarur. Bu tizimni muvaffaqiyatli yuklash uchun kerakli drayverlar va komponentlar mavjudligini ta'minlaydi.
+`mkinitcpio -p linux` tizimga ma'lum o'zgarishlar kiritilganda Linux kerneli uchun dastlabki ramdisk tasvirini qayta tiklash uchun zarur. Bu tizimni muvaffaqiyatli yuklash uchun kerakli drayverlar va komponentlar mavjudligini ta'minlaydi.
 
 #### Bootloaderni konfigratsiya qilish
 
 ```bash
 grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB --recheck
 ```
-`grub-install` buyrug'i GRUB bootloader moslamasini o'rnatish uchun ishlatiladi. `--target=x86_64-efi` opsiyasi maqsadli arxitektura `x86_64` ekanligini va bootloader moslamasi UEFI rejimida o'rnatilishi kerakligini bildiradi. `--efi-directory=/boot/EFI` opsiyasi EFI yuklash fayllari saqlanishi kerak bo'lgan directoryni belgilaydi, bu holda, `/boot/EFI`. `--bootloader-id=GRUB` opsiyasi UEFI yuklash menejerida bootloader moslamasi uchun ishlatilishi kerak bo'lgan nomni belgilash uchun ishlatiladi.
+`grub-install` buyrug'i GRUB bootloaderni o'rnatish uchun ishlatiladi. `--target=x86_64-efi` opsiyasi maqsadli arxitektura `x86_64` ekanligini va bootloader UEFI rejimida o'rnatilishi kerakligini bildiradi. `--efi-directory=/boot/EFI` opsiyasi EFI yuklash fayllari saqlanishi kerak bo'lgan directoryni belgilaydi, bu holda, `/boot/EFI`. `--bootloader-id=GRUB` opsiyasi UEFI yuklash menejerida bootloader moslamasi uchun ishlatilishi kerak bo'lgan nomni belgilash uchun ishlatiladi.
 
 Ushbu buyruq UEFI firmwaredan foydalanadigan Arch Linux tizimi uchun GRUB-ni bootloader vositasi sifatida o'rnatish uchun ishlatiladi. GRUB - bu bir nechta operatsion tizimlarni yuklashni qo'llab-quvvatlaydigan va Linux tizimlarida keng qo'llaniladigan mashhur bootloader. grub-install buyrug'i bilan ta'minlangan variantlar maqsadli arxitekturani, EFI bootloader fayllarining joylashuvini va UEFI boot menejerida bootloader nomini belgilash uchun ishlatiladi.
 
@@ -527,7 +558,7 @@ Oddiy Arch Linux o'rnatilishi kontekstida siz asosiy tizimni o'rnatish va sozlas
 
 Chroot muhitidan chiqish va jonli tizimga qaytish o'rnatish jarayonini yakunlashda muhim qadamdir, chunki u har qanday o'rnatilgan bo'limlarni o'chirish va yangi Arch Linux o'rnatilishidan foydalanishni boshlash uchun tizimni qayta ishga tushirish imkonini beradi.
 
-Shuning uchun, chiqish buyrug'i o'rnatish jarayonini yakunlash uchun zarur va o'rnatish jarayonida tegishli vaqtda ishlatilishi kerak.
+Shuning uchun, `exit` buyrug'i o'rnatish jarayonini yakunlash uchun zarur va o'rnatish jarayonida tegishli vaqtda ishlatilishi kerak.
 
 ```bash
 umount -a
@@ -583,7 +614,7 @@ sudo reboot
 
 Ushbu kod XFCE4 ish stoli muhitini va XFCE4 uchun qo'shimcha plaginlar va yordamchi dasturlarni taqdim etadigan xfce4-goodies kabi ba'zi qo'shimcha paketlarni o'rnatadi. Shuningdek, u grafik login screenni taqdim qiluvchi displey menejeri `lightdm` va `GTK+` toolkitdan foydalanadigan `LightDM `displey menejeri uchun greeter lightdm-gtk-greeterni o'rnatadi.
 
-Bundan tashqari, u grafik foydalanuvchi interfeyslari uchun asos bo'lgan dasturiy ta'minot frameworki bo'lgan X Window System bo'lgan xorg ni o'rnatadi. Shuningdek, u Xorg uchun 3D grafiklarni qo'llab-quvvatlaydigan OpenGL specificationning open-source ilovasi bo'lgan `mesa`-ni o'rnatadi.
+Bundan tashqari, u grafik foydalanuvchi interfeyslari uchun asos bo'lgan dasturiy ta'minot frameworki bo'lgan `X Window System `bo'lgan `xorg` ni o'rnatadi. Shuningdek, u Xorg uchun 3D grafiklarni qo'llab-quvvatlaydigan OpenGL specificationning open-source ilovasi bo'lgan `mesa`-ni o'rnatadi.
 
 Kodning ikkinchi qatori LightDM displey menejerini boshqarish uchun masul bo'lgan tizim xizmati bo'lgan `lightdm.service`-ni ishga tushiradi. Bu LightDM displey menejerining yuklash vaqtida avtomatik ravishda ishga tushishini ta'minlaydi va foydalanuvchiga grafik interfeys orqali tizimga kirish imkonini beradi.
 
@@ -593,11 +624,15 @@ Agar sizga xfce4ni o'zini standart dizayni ko'rishini yoqmasa uni didingizga qar
 
 ### [Xfce4 Ko'rinishi o'zgartirish](https://github.com/ismoilovdevml/de-config/tree/master/xfce4-macos-config)
 
+Agar siz boshqa DE larni o'rnatmoqchi bo'lsagiz quyidagi havola orqai o'zongizga yoqqan De larni o'rnatib olishingiz mumkin
+
+### [Boshqa DE larni o'rnatish qo'llanmasi(o'zbek tilida)](https://t.me/xinuxuz/207118/207352)
+
 ## Xulosa
 
 Xulosa qilib aytganda, biz foydalanuvchilarga yengil va soddalashtirilgan hisoblash muhitini taqdim etuvchi kuchli va sozlanishi mumkin bo'lgan Arch Linux operatsion tizimini o'rnatishni yakunladik. O'rnatish jarayonida biz diskni qismlarga ajratdik, asosiy tizimni o'rnatdik, boot loaderni sozladik, qo'shimcha dasturiy ta'minotni o'rnatdik va tarmoq va foydalanuvchi hisoblari kabi asosiy tizim konfiguratsiyalarini o'rnatdik.
 
-Tizimni qayta ishga tushirgandan so'ng, bizga Arch Linux buyruq qatori interfeysi taqdim etildi, u bizning ehtiyojlarimizga moslashtirilgan va moslashtirilgan. Bu yerdan foydalanuvchilar qo‘shimcha dasturlarni o‘rnatishlari, tizim sozlamalarini sozlashlari va Arch Linux muhitini o‘z xohishlariga ko‘ra nozik sozlashlari mumkin. Keyin biz Desktop Environment o'rnattik.
+Tizimni qayta ishga tushirgandan so'ng, bizga Arch Linux buyruq qatori interfeysi taqdim etildi, u bizning ehtiyojlarimizga moslashtirilgan va moslashtirilgan. Bu yerdan foydalanuvchilar qo‘shimcha dasturlarni o‘rnatishlari, tizim sozlamalarini sozlashlari va Arch Linux muhitini o‘z xohishlariga ko‘ra nozik sozlashlari mumkin. Keyin biz Desktop Environment o'rnatdik.
 
 O'rnatish jarayoni boshqa Linux distributivlariga qaraganda ancha murakkab bo'lishi mumkin bo'lsa-da, Arch Linux-ning afzalliklari uning moslashuvchanligi, minimalizmi va sozlanishidadir. Bu ularning o'ziga xos ehtiyojlariga moslashtirilishi mumkin bo'lgan yengil va samarali operatsion tizimni xohlaydigan foydalanuvchilar uchun ideal tanlovdir.
 
@@ -607,11 +642,11 @@ O'rnatish jarayoni boshqa Linux distributivlariga qaraganda ancha murakkab bo'li
 * [Telegram Blog](https://t.me/Otabek_Ismoilov)
 * [Github](https://github.com/ismoilovdevml)
 
-#### Hamjamiya: Xinux
+#### Hamjamiyat: Xinux
 * [Veb-sayt](https://www.xinux.uz/)
 * [Telegram](https://t.me/xinuxuz)
 
-#### Hamjamiya: Uzinfocom Open Source
+#### Hamjamiyat: Uzinfocom Open Source
 
 * [Veb-sayt](https://oss.uzinfocom.uz)
 * [Telegram](https://t.me/uzinfocom_oss)
