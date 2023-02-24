@@ -550,3 +550,47 @@ Arch Linuxni o'rnatish jarayonida diskni qismlarga ajratish, asosiy tizimni o'rn
 `sudo reboot`-dan foydalanib, tizim barcha ishlaydigan jarayonlar va xizmatlarni ehtiyotkorlik bilan o'chiradi, o'rnatilgan fayl tizimlarini o'chiradi va tizimni qayta ishga tushiradi. Bu tizimning toza holatda bo'lishini va o'rnatish jarayonida kiritilgan har qanday o'zgarishlarning to'g'ri qo'llanilishini ta'minlaydi.
 
 Shunday qilib, ha, tizimni to'g'ri qayta ishga tushirish va o'rnatish jarayonida kiritilgan har qanday o'zgarishlar to'g'ri qo'llanilishini ta'minlash uchun Arch Linuxni o'rnatish jarayonida sudo reboot buyrug'idan foydalanish zarur.
+
+
+
+Arch Linux o'rnatilgandan va tizim qayta ishga tushirilgandan so'ng, kompyuter Arch Linux operatsion tizimi bilan ishga tushadi. Foydalanuvchiga tizimga kirish uchun foydalanuvchi nomi va parolni kiritishi mumkin bo'lgan tizimga kirish so'rovi taqdim etiladi.
+
+Tizimga kirgandan so'ng, foydalanuvchi standart bo'yicha buyruq qatori interfeysiga kirish huquqiga ega bo'ladi. Ushbu minimal o'rnatish foydalanuvchi o'z ehtiyojlariga moslashtirilgan to'liq ishlaydigan tizimni yaratish uchun ish desktop environment yoki window managerni va boshqa dasturlarni qo'lda o'rnatishi kerakligini anglatadi.
+
+Grafik ish stoli muhitini o'rnatish uchun foydalanuvchi kerakli paketlarni o'rnatish uchun pacman paket menejeridan foydalanadi.
+
+## Desktop Environment o'rnatish
+
+Arch Linux-ni o'rnatgandan so'ng, tizim ishlaydi, lekin foydalanuvchi grafik interfeysi (GUI) yoki ish stoli muhiti (DE) bilan birga kelmaydi. Tizimdan grafik interfeys bilan foydalanish uchun DE o'rnatilishi kerak.
+
+DE - bu operatsion tizim bilan o'zaro aloqada bo'lish uchun yaxlit va integratsiyalangan foydalanuvchi interfeysini ta'minlovchi dasturiy ta'minot to'plami. Bunga fayl boshqaruvchisi, grafik ilovalarni ishga tushirish moslamasi va tizim sozlamalari kabi xususiyatlar kiradi. Arch Linux uchun bir nechta DE mavjud, jumladan GNOME, KDE, Xfce, Cinnamon, Deepin, LXDE va boshqalar.
+
+DE ni o'rnatish uchun bir nechta paketlarni o'rnatish kerak, jumladan DE ning o'zi, displey drayverlari va displey menejeri. Displey drayverlari grafik uskuna bilan bog'lanish uchun zarurdir va displey menejeri foydalanuvchilarning tizimga kirishi uchun kirish ekranini taqdim etadi.
+
+### Xfce4 DE o'rnatish
+
+Xfce4 - bu Arch Linux-ga o'rnatilishi mumkin bo'lgan yengil va mashhur ish stoli muhiti. Xfce4 ni o'rnatish uchun terminalda quyidagi buyruqdan foydalanishingiz mumkin:
+
+```bash
+sudo pacman -Syyu xfce4 xfce4-goodies lightdm lightdm-gtk-greeter xorg mesa xf86-video-intel
+```
+
+```bash
+sudo systemctl enable lightdm.service
+
+sudo reboot
+```
+
+Ushbu kod XFCE4 ish stoli muhitini va XFCE4 uchun qo'shimcha plaginlar va yordamchi dasturlarni taqdim etadigan xfce4-goodies kabi ba'zi qo'shimcha paketlarni o'rnatadi. Shuningdek, u grafik login screenni taqdim qiluvchi displey menejeri `lightdm` va `GTK+` toolkitdan foydalanadigan `LightDM `displey menejeri uchun greeter lightdm-gtk-greeterni o'rnatadi.
+
+Bundan tashqari, u grafik foydalanuvchi interfeyslari uchun asos bo'lgan dasturiy ta'minot frameworki bo'lgan X Window System bo'lgan xorg ni o'rnatadi. Shuningdek, u Xorg uchun 3D grafiklarni qo'llab-quvvatlaydigan OpenGL specificationning open-source ilovasi bo'lgan `mesa`-ni o'rnatadi.
+
+Kodning ikkinchi qatori LightDM displey menejerini boshqarish uchun masul bo'lgan tizim xizmati bo'lgan `lightdm.service`-ni ishga tushiradi. Bu LightDM displey menejerining yuklash vaqtida avtomatik ravishda ishga tushishini ta'minlaydi va foydalanuvchiga grafik interfeys orqali tizimga kirish imkonini beradi.
+
+## Xulosa
+
+Xulosa qilib aytganda, biz foydalanuvchilarga yengil va soddalashtirilgan hisoblash muhitini taqdim etuvchi kuchli va sozlanishi mumkin bo'lgan Arch Linux operatsion tizimini o'rnatishni yakunladik. O'rnatish jarayonida biz diskni qismlarga ajratdik, asosiy tizimni o'rnatdik, boot loaderni sozladik, qo'shimcha dasturiy ta'minotni o'rnatdik va tarmoq va foydalanuvchi hisoblari kabi asosiy tizim konfiguratsiyalarini o'rnatdik.
+
+Tizimni qayta ishga tushirgandan so'ng, bizga Arch Linux buyruq qatori interfeysi taqdim etildi, u bizning ehtiyojlarimizga moslashtirilgan va moslashtirilgan. Bu yerdan foydalanuvchilar qo‘shimcha dasturlarni o‘rnatishlari, tizim sozlamalarini sozlashlari va Arch Linux muhitini o‘z xohishlariga ko‘ra nozik sozlashlari mumkin. Keyin biz Desktop Environment o'rnattik.
+
+O'rnatish jarayoni boshqa Linux distributivlariga qaraganda ancha murakkab bo'lishi mumkin bo'lsa-da, Arch Linux-ning afzalliklari uning moslashuvchanligi, minimalizmi va sozlanishidadir. Bu ularning o'ziga xos ehtiyojlariga moslashtirilishi mumkin bo'lgan yengil va samarali operatsion tizimni xohlaydigan foydalanuvchilar uchun ideal tanlovdir.
