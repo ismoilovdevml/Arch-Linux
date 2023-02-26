@@ -427,7 +427,7 @@ Ushbu buyruq Arch Linux tizimida bootloader bilan bog'liq bir nechta paketlarni 
 
 * `dosfstools` Ushbu paket odatda UEFI tizimlarida yuklanadigan bo'limlar uchun ishlatiladigan MS-DOS FAT fayl tizimlarini yaratish va tekshirish uchun yordamchi dasturlarni taqdim etadi.
 
-* `tools` Ushbu paket MS-DOS formatidagi disklar va disk tasvirlari bilan ishlash uchun yordamchi dasturlar to'plamini taqdim etadi.
+* `mtools` Ushbu paket MS-DOS formatidagi disklar va disk tasvirlari bilan ishlash uchun yordamchi dasturlar to'plamini taqdim etadi.
 
 * `os-prober` Ushbu vosita boshqa operatsion tizimlar va bir xil mashinada o'rnatilgan bootloaderlarni aniqlash uchun ishlatiladi.
 
@@ -550,7 +550,6 @@ Bu ikkita buyruq birgalikda tizimda SSH-ga kirish va tarmoqni boshqarish imkonin
 ### chroot muhitidan chiqish
 
 ```bash
-exit
 exit
 ```
 
