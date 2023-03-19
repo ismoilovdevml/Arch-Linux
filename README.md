@@ -633,7 +633,7 @@ Xulosa qilib aytganda, biz foydalanuvchilarga yengil va soddalashtirilgan hisobl
 
 Tizimni qayta ishga tushirgandan so'ng, bizga Arch Linux buyruq qatori interfeysi taqdim etildi, u bizning ehtiyojlarimizga moslashtirilgan va moslashtirilgan. Bu yerdan foydalanuvchilar qo‘shimcha dasturlarni o‘rnatishlari, tizim sozlamalarini sozlashlari va Arch Linux muhitini o‘z xohishlariga ko‘ra nozik sozlashlari mumkin. Keyin biz Desktop Environment o'rnatdik.
 
-O'rnatish jarayoni boshqa Linux distributivlariga qaraganda ancha murakkab bo'lishi mumkin bo'lsa-da, Arch Linux-ning afzalliklari uning moslashuvchanligi, minimalizmi va sozlanishidadir. Bu ularning o'ziga xos ehtiyojlariga moslashtirilishi mumkin bo'lgan yengil va samarali operatsion tizimni xohlaydigan foydalanuvchilar uchun ideal tanlovdir.
+O'rnatish jarayoni boshqa Linux distributivlariga qaraganda ancha murakkab bo'lishi mumkin bo'lsa-da, Arch Linux-ning afzalliklari uning moslashuvchanligi, minimalizmi va sozlanishidadir. Bu ularning o'ziga xos ehtiyojlariga moslashtirilishi mumkin bo'lgan yengil va samarali operatsion tizimni xohlaydigan foydalanuvchilar uchun ideal tanlovdir. Ushbu repositoryda qo'llanmaning .docx varianti ham mavjud.
 
 
 #### Muallif: Otabek Ismoilov
