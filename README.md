@@ -242,9 +242,9 @@ Arch Linux-dagi asosiy tizim funksional operatsion tizimga ega bo'lish uchun zar
 Asosiy tizimni o'rnatishda muammolar chiqmasligi uchun archlinux-keyring dasturini o'rnatib olamiz.
 
 ```bash
-sudo pacman -S archlinux-keyring
+sudo pacman -Sy archlinux-keyring
 ```
-`sudo pacman -S archlinux-keyring` - bu tizimingizga Arch Linux kalitlari paketini o'rnatuvchi buyruq.
+`sudo pacman -Sy archlinux-keyring` - bu tizimingizga Arch Linux kalitlari paketini o'rnatuvchi buyruq.
 
 Arch Linux kalitlari toʻplami Arch Linux repositoriyalaridan oʻrnatilgan paketlarning yaxlitligi va haqiqiyligini tekshirish uchun foydalaniladigan ochiq kalitlar toʻplamidir. Kalitlar paketlar tranzit paytida hech qanday tarzda buzilmagan yoki o'zgartirilmaganligini ta'minlash uchun ishlatiladi.
 
@@ -320,8 +320,22 @@ Operatsion tizim tilini o'rnatish - bu tizimni kerakli tilda matn va xabarlarni 
 Yangi tilni o'rnatish uchun paket menejeri yordamida tilni qo'llab-quvvatlash paketlarini o'rnatishingiz kerak. Masalan, Arch Linux-da siz kerakli tilni qo'llab-quvvatlash paketlarini o'rnatish uchun pacman paket menejeridan foydalanishingiz mumkin. Masalan, ingliz tilini qo'llab-quvvatlashni o'rnatish uchun siz quyidagi buyruqni bajarishingiz mumkin:
 
 ```bash
-sudo pacman -S glibc-locales
+sudo pacman -Sy glibc-locales
 ```
+
+Mahalliy til sozlamalarini belgilarni kodlashni quuyidagi buyruq bilan sozlaymiz
+
+```bash
+nano /ect/locale.conf
+```
+`nano` matnn muharrir orqali `/ext/locale.conf` faylini ochamiz va quyidagi configratsiyani qo'shib qo'yamiz.
+
+```bash
+LANG=en_US.UTF-8
+```
+
+locale.conf fayli tizimning mahalliy sozlamalarini, jumladan til va belgilar kodlashni aniqlash uchun ishlatiladi. Bunday holda,` LANG=en_US.UTF-8` qatori tizimning standart tilini `UTF-8`(character encoding) belgilar kodlash bilan Amerika ingliz tiliga (en_US) o'rnatadi.
+
 Va nihoyat, `/etc/locale.conf` faylida LANG muhit o'zgaruvchisini o'rnatish orqali tizim tilini o'rnatishingiz mumkin. Buning uchun `nano` matn muraharriri orqali `/etc/locale.conf` faylidan kerakli tilini tanlab izohdan(`#`) chiqarishingiz kerak.
 
 ```bash

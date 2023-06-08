@@ -132,7 +132,7 @@ chroot  huquq kerak bo'ladi `/mnt`  ga arch chrootni ulaymiz
 $ arch-chroot /mnt
 ```
 Hostname yozamiz yani Komyuterga Nom `ismoilovdev@MacbookPro` terminalga kirganimid shu chiqadi 
-shu yerdan `Macbookpro `degan nomni host name dan olyapti
+shu yerdan `MacbookPro `degan nomni host name dan olyapti
 ```bash
 $ echo "kompyuternomi" > /etc/hostname
 ```
