@@ -457,9 +457,10 @@ mkinitcpio -p linux
 #### Bootloaderni konfigratsiya qilish
 
 ```bash
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=GRUB --recheck
+$ grub-install --target=x86_64-efi --bootloader-id=GRUB --recheck
 ```
-`grub-install` buyrug'i GRUB bootloaderni o'rnatish uchun ishlatiladi. `--target=x86_64-efi` opsiyasi maqsadli arxitektura `x86_64` ekanligini va bootloader UEFI rejimida o'rnatilishi kerakligini bildiradi. `--efi-directory=/boot/EFI` opsiyasi EFI yuklash fayllari saqlanishi kerak bo'lgan directoryni belgilaydi, bu holda, `/boot/EFI`. `--bootloader-id=GRUB` opsiyasi UEFI yuklash menejerida bootloader moslamasi uchun ishlatilishi kerak bo'lgan nomni belgilash uchun ishlatiladi.
+`grub-install` buyrug'i GRUB bootloaderni o'rnatish uchun ishlatiladi. `--target=x86_64-efi` opsiyasi maqsadli arxitektura `x86_64` ekanligini va bootloader UEFI rejimida o'rnatilishi kerakligini bildiradi.
+
 
 Ushbu buyruq UEFI firmwaredan foydalanadigan Arch Linux tizimi uchun GRUB-ni bootloader vositasi sifatida o'rnatish uchun ishlatiladi. GRUB - bu bir nechta operatsion tizimlarni yuklashni qo'llab-quvvatlaydigan va Linux tizimlarida keng qo'llaniladigan mashhur bootloader. grub-install buyrug'i bilan ta'minlangan variantlar maqsadli arxitekturani, EFI bootloader fayllarining joylashuvini va UEFI boot menejerida bootloader nomini belgilash uchun ishlatiladi.
 
