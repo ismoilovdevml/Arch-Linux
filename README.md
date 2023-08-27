@@ -317,18 +317,12 @@ echo "KEYMAP=en_US.UTF-8" > /etc/vconsole.conf
 
 Operatsion tizim tilini o'rnatish - bu tizimni kerakli tilda matn va xabarlarni ko'rsatish uchun mahalliylashtirish jarayoni.
 
-Yangi tilni o'rnatish uchun paket menejeri yordamida tilni qo'llab-quvvatlash paketlarini o'rnatishingiz kerak. Masalan, Arch Linux-da siz kerakli tilni qo'llab-quvvatlash paketlarini o'rnatish uchun pacman paket menejeridan foydalanishingiz mumkin. Masalan, ingliz tilini qo'llab-quvvatlashni o'rnatish uchun siz quyidagi buyruqni bajarishingiz mumkin:
-
-```bash
-sudo pacman -Sy glibc-locales
-```
-
-Mahalliy til sozlamalarini belgilarni kodlashni quuyidagi buyruq bilan sozlaymiz
+Yangi tilni o'rnatish uchun paket menejeri yordamida tilni qo'llab-quvvatlash paketlarini o'rnatishingiz kerak. Masalan, Arch Linux-da siz kerakli tilni qo'llab-quvvatlash paketlarini o'rnatish uchun pacman paket menejeridan foydalanishingiz mumkin. Mahalliy til sozlamalarini belgilarni kodlashni quuyidagi buyruq bilan sozlaymiz
 
 ```bash
 nano /ect/locale.conf
 ```
-`nano` matnn muharrir orqali `/ext/locale.conf` faylini ochamiz va quyidagi configratsiyani qo'shib qo'yamiz.
+`nano` matnn muharrir orqali `/etc/locale.conf` faylini ochamiz va quyidagi configratsiyani qo'shib qo'yamiz.
 
 ```bash
 LANG=en_US.UTF-8
