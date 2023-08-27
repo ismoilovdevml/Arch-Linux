@@ -330,10 +330,10 @@ LANG=en_US.UTF-8
 
 locale.conf fayli tizimning mahalliy sozlamalarini, jumladan til va belgilar kodlashni aniqlash uchun ishlatiladi. Bunday holda,` LANG=en_US.UTF-8` qatori tizimning standart tilini `UTF-8`(character encoding) belgilar kodlash bilan Amerika ingliz tiliga (en_US) o'rnatadi.
 
-Va nihoyat, `/etc/locale.conf` faylida LANG muhit o'zgaruvchisini o'rnatish orqali tizim tilini o'rnatishingiz mumkin. Buning uchun `nano` matn muraharriri orqali `/etc/locale.conf` faylidan kerakli tilini tanlab izohdan(`#`) chiqarishingiz kerak.
+Va nihoyat, `/etc/locale.gen` faylida LANG muhit o'zgaruvchisini o'rnatish orqali tizim tilini o'rnatishingiz mumkin. Buning uchun `nano` matn muraharriri orqali `/etc/locale.conf` faylidan kerakli tilini tanlab izohdan(`#`) chiqarishingiz kerak.
 
 ```bash
-nano /etc/locale.conf
+nano /etc/locale.gen
 ```
 
 Tanlangan tilni `#` izohdan chiqarganizdan keyin nano matn muhariridan tharirlangan kodni saqlash uchun `ctrl+o` bosiladi va `enter` bosiladi keyin chiqish uchun esa `ctrl+x` bosib chiqib ketamiz. Keyin mahalliy tilni yaratish uchun quyidagi buyruqni bajarishingiz mumkin:
