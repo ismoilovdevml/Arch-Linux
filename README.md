@@ -585,12 +585,12 @@ Ushbu qadamlar Arch Linux tizimingizda GRUB bootloaderni o'rnatadi va sozlaydi. 
 Arch Linux uchun kerakli dastur, drayver va utilitalarni o'rnatamiz.
 
 ```bash
-pacman -S neofetch python firefox unzip xarchiver git htop net-tools e2fsprogs xfsprogs iproute2
+pacman -S fastfetch python firefox unzip xarchiver git htop net-tools e2fsprogs xfsprogs iproute2
 ```
 
 `pacman -S` buyrug'i va undan keyin paketlar nomlari ro'yxati ushbu paketlarni Arch Linux-ga o'rnatish uchun ishlatiladi. Quyida sanab o'tilgan har bir paketning qisqacha tushuntirishi keltirilgan:
 
-* `neofetch` Terminalda tizim ma'lumotlari va qurilma tafsilotlarini ko'rsatish uchun ishlatiladigan buyruq qatori yordam dasturi.
+* `fastfetch` Terminalda tizim ma'lumotlari va qurilma tafsilotlarini ko'rsatish uchun ishlatiladigan buyruq qatori yordam dasturi. (Eski `neofetch` 2024-yilda muallif tomonidan arxivlangan va Arch rasmiy repolaridan olib tashlangan — uning o'rniga `fastfetch` ishlatiladi.)
 
 * `python` Skript yaratish, veb-ishlab chiqish, ma'lumotlarni tahlil qilish va boshqalar kabi turli maqsadlarda ishlatiladigan mashhur dasturlash tili.
 
